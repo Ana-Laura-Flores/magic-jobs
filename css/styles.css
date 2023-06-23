@@ -1,0 +1,72 @@
+
+  .spinner {
+    position: relative;
+    
+  }
+   #spinner-01{
+    
+    animation: spin 3s infinite;
+  }
+    #spinner-02{
+    position: absolute;
+    animation: spin2 3s infinite;
+  }  
+   #spinner-03 {
+    position: absolute;
+    animation: spin3 10s infinite alternate;
+     
+  } 
+  @keyframes spin {
+    0% {
+      opacity: 1;
+    }
+    40%{
+      opacity: 0;
+    }
+    60% {
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+  @keyframes spin2 {
+    0% {
+      opacity: 0;
+    }
+    40%{
+      opacity: 1;
+    }
+    60% {
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+  @keyframes spin3 {
+    0% {
+      opacity: 0;
+    }
+    40%{
+      opacity: 0;
+    }
+    60% {
+      opacity: 1;
+    }
+    90%{
+      opacity: 0;
+    }
+  }
+ 
+  
+  @media (max-width:480px) {
+    .spinner {
+      width: 270px;
+      height: 270px;
+    }
+    .spinner img {
+      position: absolute;
+     
+    }
+  }
