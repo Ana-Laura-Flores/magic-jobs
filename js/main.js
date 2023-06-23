@@ -74,4 +74,28 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
     
 }
 
+// open
+
+const openDetails = (id) => {
+    hideElement(".hero")
+    hideElement(".search")
+    hideElement(".cards")
+    // const idEditJob = $(".edit-job").setAttribute("data-id", id)
+    // const idDeleteJob = $(".delete-job").setAttribute("data-id", id)
+    // $(".delete-job"),addEventListener("click", deleteJobs(id))
+    showElement(".jobs-details")
+    getDetailsJobs(id)
+    
+}
+
+const openForm = () => {
+    $("#open-form").addEventListener("click", () => {
+        showElement(".form")
+        hideElement(".hero")
+        hideElement(".search")
+        hideElement(".cards")
+        hideElement(".spinner")
+    })
+}
 getJobs()
+openForm()
