@@ -4,7 +4,14 @@ const hideElement = (selector) => $(selector).classList.add('hidden')
 const showElement = (selector) => $(selector).classList.remove('hidden')
 const cleanContainer = (selector) => $(selector).innerHTML = ""
 
-
+// function mouse
+document.addEventListener("mousemove", (e) => {
+    let imagen = $("#sombrero");
+    let x = e.clientX;
+    let y = e.clientY;
+    imagen.style.left = (x + 5 ) + "px";
+    imagen.style.top = (y + 5 ) + "px";
+  });
 
 const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
 
@@ -19,6 +26,22 @@ const getDetailsJobs = (id) => {
     .then(job => renderJobsDetails(job))
 }
 
+const addJobs = () => {
+    fetch(urlBase, {
+        method: "POST",
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(),   // DATO QUE VAMOS A MANDAR
+    })
+}
+
+const deleteJobs = (id) => {
+    fetch(`${urlBase}/${id}`, {
+        method: "DELETE",
+    }).finally(() => window.location.reload())
+
+}
 // renders 
 const renderCardsJobs = (jobs) => {
     showElement(".spinner")

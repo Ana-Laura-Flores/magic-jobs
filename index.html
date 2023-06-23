@@ -16,6 +16,7 @@
     <title>Magic Jobs</title>
 </head>
 <body>
+    <img id="sombrero" src="./assets/icons/sombrero.png">
     <header>
         <nav class="h-30  bg-gradient-to-r from-zinc-950 to-sky-900	 ">
             <div class="container flex w-screen items-center justify-center px-10">
@@ -34,7 +35,7 @@
                     <li class="p-5 font-bold text-white hover:text-slate-500 ">
                         <a href="#jobs">Ver Trabajos</a>
                     </li>
-                    <li class="p-5 font-bold text-white hover:text-slate-500 ">
+                    <li class="p-5 font-bold text-white hover:text-slate-500 " id="open-form">
                         <a href="#">Agregar Trabajo</a>
                     </li>
                   </ul>
@@ -58,22 +59,22 @@
                 <div class="flex flex-col lg:flex-row">
                    <div class="container flex flex-col">
                         <label for="" class="font-bold text-base text-white p-1.5 mx-2 ">BUSCAR TRABAJOS</label>
-                        <input class="btn w-3/4 lg:w-52 h-12 rounded-2xl bg-slate-600 font-bold text-base text-white p-1.5	m-2	my-3 hover:scale-105">
+                        <input class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-600 font-bold text-base text-white p-1 m-2	my-3 hover:scale-105">
                    </div>
                     <div class="container flex flex-col ">
-                        <label for=""class="font-bold text-base text-white p-1.5 mx-2 ">CATEGORIA</label>
-                        <input class="btn w-3/4 lg:w-52 h-12 rounded-2xl border-solid border-white border-2 font-bold text-white p-1.5 m-2 my-3 hover:scale-105">
+                        <label for=""class="font-bold text-base text-white p-1 mx-2 ">CATEGORIA</label>
+                        <input class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-xl font-bold text-white p-1 m-2 my-4 hover:scale-105">
                      </div>  
                 </div>
                      <div class="container-buttons flex items-end justify-between	m-2 my-3 ">
-                        <button class="w-3/4 lg:w-52 h-12 mx-3 rounded-2xl bg-slate-950 font-bold text-base text-white p-1.5">Buscar</button>
-                        <button class="w-3/4 lg:w-52 h-12 mx-3 rounded-2xl bg-slate-950 font-bold text-base text-white p-1.5">Limpiar</button>
+                        <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-sky-700">Buscar</button>
+                        <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-cyan-900">Limpiar</button>
                      </div>
                 </div>
             </article>
         </section>
- 
-        <section class="cards h-auto p-8  bg-gradient-to-r  to-slate-600 from-sky-900 " id="jobs">
+          
+        <section class="cards w-full h-auto p-8  bg-[url(./assets/img/background-jobs-2.jpg)] bg-repeat " id="jobs">
             <article>
                 <h3 class="text-3xl text-center font-bold text-white my-8 ">Empleos Mágicos</h3>
                 <div class="flex  flex-col  items-center flex-wrap  lg:flex-row lg:justify-evenly lg:mx-24" id="container-jobs">
@@ -106,7 +107,7 @@
                 </div>
             </article>
         </section>
-        <section class="jobs-details bg-[url('./assets/img/background-details.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
+        <section class="jobs-details hidden bg-[url('./assets/img/background-details.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
             <div class="container-jobs-details w-full h-auto flex items-center justify-center">
                 <div class="card-details w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
                     <!-- <div class="w-full md:w-1/4 flex pt-5 justify-center backdrop-filter-none">
@@ -135,7 +136,7 @@
                 </div>
             </div>
         </section>
-        <section class="form bg-[url('./assets/img/backgroun-add.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
+        <section class="form hidden bg-[url('./assets/img/backgroun-add.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
             <div class="container-form w-full h-auto flex items-center justify-center">
                 <div class="form-add-jobs p-3 w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
                     <div class="p-5 flex flex-col">
@@ -150,14 +151,17 @@
                     <div>
                         <div class="pb-3 flex-col md:flex-row ">
                             <label for="">Ubicación</label>
-                            <select name="" id="">
+                            <select name="location" id="location">
                                 <option value="remote">Remoto</option>
                                 <option value="presencial">Presencial</option>
+                            </select>
+                            <select name="membreship" id="membreship">
                                 <option value="hogwarts">Hogwarts</option>
                                 <option value="gringot">Gringot</option>
                                 <option value="ministery">Ministerio de Magia</option>
                                 <option value="hospitaly">Hospital San Mungo</option>
                             </select>
+                                
                             <div class="mt-3">
                                 <label for="" class="md:pl-3">Sueldo</label>
                                 <input type="number" name="" id="">
@@ -176,8 +180,8 @@
                             <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="defense" id=""> Defensa contra las Artes Oscuras</label>
                         </div>
                         <div class="flex justify-end mt-3">
-                            <button class="ml-3 px-2 py-1 rounded-md bg-teal-900	 hover:bg-teal-600 text-white">Agregar</button>
-                            <button class="ml-3 px-2 py-1 rounded-md bg-cyan-900	 hover:bg-sky-700 text-white">Cancelar</button>
+                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white">Agregar</button>
+                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white">Cancelar</button>
                         </div>
                     </div>
                 </div>
