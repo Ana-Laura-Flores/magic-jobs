@@ -13,6 +13,11 @@ const getJobs = () => {
     .then(response => response.json())
     .then(jobs => renderCardsJobs(jobs))
 }
+const getDetailsJobs = (id) => {
+    fetch (`${urlBase}/${id}`)
+    .then(response => response.json())
+    .then(job => renderJobsDetails(job))
+}
 
 // renders 
 const renderCardsJobs = (jobs) => {
@@ -33,6 +38,40 @@ const renderCardsJobs = (jobs) => {
             }
         }, 3000)
     }
+}
+
+const renderJobsDetails = ({ id, name, image, description, descriptionDetails, salary, location, organitation, knowledge }) => {
+    showElement(".spinner")
+        setTimeout(() => {
+            hideElement(".spinner")
+            $(".card-details").innerHTML += `
+                <div class="w-full md:w-1/4 flex pt-3 justify-center backdrop-filter-none">
+                        <img src="${image}" class="object-cover w-64 h:52 md:w-52 md:h-80 " alt="${name}">
+                    </div>
+                    <div class="w-2/3 p-3">
+                        <div class="name-details text-3xl text-[#373737] font-bold">${name}</div>
+                        <div class="membership-details text-xl">${organitation.membership}</div>
+                        <div class="description-details text-sm mt-2 "> ${description} ${descriptionDetails}</div>
+                        <div class="location-details pt-3">Ubicación laboral: ${location}</div>
+                        <div class="salary-details pt-3">Remuneración: ${salary} galeones</div>
+                        <div class="knowledge-details text-base font-bold pt-3"> Debe tener conocomientos de: 
+                            <ul class="text-base font-normal ">
+                                <li>${knowledge[0]}</li>
+                                <li>${knowledge[1]}</li>
+                                <li>${knowledge[2]}</li>
+                                <li>${knowledge[3]}</li>
+                            </ul> 
+                        </div>
+                        <div class="enemies-details pt-3">Enemigos con quien debe pelear: ${organitation.enemies}</div>
+                        <div class="container-btn-details flex justify-end pt-5">
+                            <button class="edit-job px-3 rounded-lg mx-5 bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white ">Editar</button>
+                            <button class="delete-job px-3 rounded-lg bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white ">Eliminar</button>
+                        </div>
+                    </div>
+                `
+            
+        }, 3000)
+    
 }
 
 getJobs()
