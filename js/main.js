@@ -32,8 +32,8 @@ const addJobs = () => {
             headers: {
                 'Content-Type': 'Application/json'
             },
-            body: JSON.stringify(),   // DATO QUE VAMOS A MANDAR
-    })
+            body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
+    }).finally(() => window.location.reload())
 }
 
 const deleteJobs = (id) => {
@@ -97,6 +97,29 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
     
 }
 
+// save jobs
+const saveJobs = () =>{
+    return {
+        name: $("#name-job").value,
+        image: "https://pm1.aminoapps.com/6875/45b11445c8860dc4385e7c09df22be149ca03155r1-512-384v2_hq.jpg",
+        description: $("#description-job").value,
+        location: $("#location").value,
+        organitation: {
+                        intention: "Terminar con los Magos Oscuros",
+                        membership: $("#membreship").value,
+                        enemies: "Mortífagos"
+                    },
+        salary: $("#salary").value,
+        knowledge: [
+            "Disimulo y Rastreo ",
+            "Transformaciones",
+            "Encantamientos",
+            "Pociones"
+            ],
+        descriptionDetails: $("#description-details-job").value,
+    }
+}
+console.log(saveJobs())
 // open
 
 const openDetails = (id) => {
@@ -118,7 +141,17 @@ const openForm = () => {
         hideElement(".search")
         hideElement(".cards")
         hideElement(".spinner")
+        hideElement("#edit-jobs")
+    })
+}
+
+const submitJobs = () => {
+    $("#form").addEventListener("submit", (e) => {
+        e.preventDefault()
+        addJobs()
+        $("#form").reset()
     })
 }
 getJobs()
 openForm()
+submitJobs()
