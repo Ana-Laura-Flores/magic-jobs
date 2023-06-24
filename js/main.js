@@ -119,7 +119,7 @@ const saveJobs = () =>{
         descriptionDetails: $("#description-details-job").value,
     }
 }
-console.log(saveJobs())
+
 // open
 
 const openDetails = (id) => {
@@ -142,6 +142,7 @@ const openForm = () => {
         hideElement(".cards")
         hideElement(".spinner")
         hideElement("#edit-jobs")
+        hideElement(".jobs-details")
     })
 }
 
