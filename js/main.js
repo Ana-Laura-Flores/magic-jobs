@@ -9,8 +9,8 @@ document.addEventListener("mousemove", (e) => {
     let imagen = $("#sombrero");
     let x = e.clientX;
     let y = e.clientY;
-    imagen.style.left = (x + 5 ) + "px";
-    imagen.style.top = (y + 5 ) + "px";
+    imagen.style.left = (x + imagen.width / 2 ) + "px";
+    imagen.style.top = (y + imagen.width / 2 ) + "px";
   });
 
 const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
@@ -23,7 +23,10 @@ const getJobs = () => {
 const getDetailsJobs = (id) => {
     fetch (`${urlBase}/${id}`)
     .then(response => response.json())
-    .then(job => renderJobsDetails(job))
+    .then(job => {
+            renderJobsDetails(job)
+            editJob(job)
+    })
 }
 
 const addJobs = () => {
@@ -33,7 +36,7 @@ const addJobs = () => {
                 'Content-Type': 'Application/json'
             },
             body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
-    }).finally(() => window.location.reload())
+    })
 }
 
 const deleteJobs = (id) => {
@@ -55,7 +58,7 @@ const renderCardsJobs = (jobs) => {
                     <div class="container-img"><img src="${image}" class="object-cover h-48 w-96 "alt="${name}"></div>
                     <h4 class="text-2xl text-[#373737] font-bold mt-4 ">${name}</h4>
                     <p class="text-sm mt-2"> ${description}</p>
-                    <button class="w-28 my-4 h-8 text-white  rounded-lg m-auto bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 " onclick="openDetails('${id}')">Detalles</button>
+                    <button class="details-jobs w-28 my-4 h-8 text-white  rounded-lg m-auto bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 " onclick="openDetails('${id}')">Detalles</button>
                 </div>
                 `
             }
@@ -87,13 +90,16 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
                         </div>
                         <div class="enemies-details pt-3">Enemigos con quien debe pelear: ${organitation.enemies}</div>
                         <div class="container-btn-details flex justify-end pt-5">
-                            <button class="edit-job px-3 rounded-lg mx-5 bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white ">Editar</button>
-                            <button class="delete-job px-3 rounded-lg bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white ">Eliminar</button>
+                            <button class="open-edit-job px-3 rounded-lg mx-5 bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" data-id=${id} onclick="openEdit(${id})">Editar</button>
+                            <button class="delete-job px-3 rounded-lg bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white" data-id=${id}>Eliminar</button>
                         </div>
                     </div>
                 `
             
         }, 3000)
+        
+        
+        
     
 }
 
@@ -103,10 +109,10 @@ const saveJobs = () =>{
         name: $("#name-job").value,
         image: "https://pm1.aminoapps.com/6875/45b11445c8860dc4385e7c09df22be149ca03155r1-512-384v2_hq.jpg",
         description: $("#description-job").value,
-        location: $("#location").value,
+        location: $("#location").selected,
         organitation: {
                         intention: "Terminar con los Magos Oscuros",
-                        membership: $("#membreship").value,
+                        membership: $("#membreship").selected,
                         enemies: "Mortífagos"
                     },
         salary: $("#salary").value,
@@ -135,24 +141,76 @@ const openDetails = (id) => {
 }
 
 const openForm = () => {
-    $("#open-form").addEventListener("click", () => {
-        showElement(".form")
-        hideElement(".hero")
-        hideElement(".search")
-        hideElement(".cards")
-        hideElement(".spinner")
-        hideElement("#edit-jobs")
-        hideElement(".jobs-details")
-    })
+    for (const btn of $$("#open-form")){
+        btn.addEventListener("click", () => {
+            showElement(".form")
+            hideElement(".hero")
+            hideElement(".search")
+            hideElement(".cards")
+            hideElement(".spinner")
+            hideElement("#edit-jobs")
+            hideElement(".jobs-details")
+        })
+    }
+    
 }
 
-const submitJobs = () => {
-    $("#form").addEventListener("submit", (e) => {
-        e.preventDefault()
-        addJobs()
-        $("#form").reset()
-    })
+const editJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
+    $("#name-job").value = name
+    $("#description-job").value = description
+    $("#location").value = location
+    //$("#membreship").selected = organitation.membership
+    $("#salary").value = salary
+    $("#description-details-job").value = descriptionDetails
+
 }
+
+$("#submit-jobs").addEventListener("click", (e) => {
+    e.preventDefault()
+    $("#form").reset()
+    showElement("#confirm-add-jobs")
+    setTimeout(() => {
+        addJobs()
+        hideElement("#confirm-add-jobs")
+        } ,2000)
+})
+
+
+//burguer menu
+$("#btn-menu").addEventListener("click", (e) => {
+    e.preventDefault();
+    showElement("#dropdown");
+    showElement("#btn-menu-close");
+    hideElement("#btn-menu");
+  });
+
+  $("#btn-menu-close").addEventListener("click", (e) => {
+    e.preventDefault();
+    showElement("#btn-menu");
+    hideElement("#dropdown");
+    hideElement("#btn-menu-close");
+  });
+
+// btn edit
+const openEdit = (id) => {
+    showElement(".form")
+    hideElement(".jobs-details")
+    hideElement("#submit-jobs")
+    showElement("#edit-jobs")
+    $("#edit-jobs").setAttribute("data-id", id)
+    
+}
+
+// btn cancel add and cancel edit
+$("#cancel-job").addEventListener("click", () => {
+    hideElement(".form")
+    showElement(".hero")
+    showElement(".search")
+    showElement(".jobs")
+})
+
+
+
 getJobs()
 openForm()
-submitJobs()
+

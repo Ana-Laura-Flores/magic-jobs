@@ -16,7 +16,7 @@
     <title>Magic Jobs</title>
 </head>
 <body>
-    <img id="sombrero" src="./assets/icons/sombrero.png">
+    
     <header>
         <nav class="h-30  bg-gradient-to-r from-zinc-950 to-sky-900	 ">
             <div class="container flex w-screen items-center justify-center px-10">
@@ -26,7 +26,9 @@
                     </a>
                 </div>
                 <div class="nav-burguer w-1/2 flex justify-end lg:hidden">
-                    <i class="fas fa-bars text-white text-4xl flex justify-end items-center	 p-5"></i>
+                    <i class="fas fa-bars text-white text-4xl flex justify-end items-center	 p-5" id="btn-menu"></i>
+                    <span class=" hidden text-white text-4xl flex justify-end items-center	 p-5 " id="btn-menu-close">&times;
+                    </span>
                 </div>
                 <ul class="flex items-center justify-end w-4/5 hidden lg:flex	">
                     <li class="p-5 font-bold text-white hover:text-slate-500 ">
@@ -41,8 +43,23 @@
                   </ul>
             </div>
         </nav>
+        <!--  dropdown -->
+    <div class="flex items-center justify-end w-full p-5 hidden bg-gradient-to-r to-zinc-950 from-sky-900 lg:hidden" id="dropdown">
+        <ul class="flex flex-col ">
+            <li class="p-5 font-bold text-white hover:text-slate-500 ">
+                <a href="#">Buscar Trabajos</a>
+            </li>
+            <li class="p-5 font-bold text-white hover:text-slate-500 ">
+                <a href="#jobs">Ver Trabajos</a>
+            </li>
+            <li class="p-5 font-bold text-white hover:text-slate-500 " id="open-form">
+                <a href="#">Agregar Trabajo</a>
+            </li>
+        </ul>
+    </div>
     </header>
     <main>
+        <img id="sombrero" src="./assets/icons/sombrero.png">
         <section class="hero w-full bg-fixed bg-cover flex flex-col justify-center bg-[url('./assets/img/hero-background.jpg')] . h-[18rem]">
             <article class="p-7 lg:pl-24 lg:px-24">
                 <h2 class="text-white text-center font-bold text-2xl lg:text-5xl my-5">Conseguí el mejor trabajo en el Mundo Mágico</h2>
@@ -141,11 +158,11 @@
                 <div class="form-add-jobs p-3 w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
                     <div class="p-5 flex flex-col">
                         <label for="">Nombre</label>
-                        <input type="text" id="name-job">
+                        <input type="text" id="name-job" class="p-2">
                         <label for="">Descripción</label>
-                        <textarea name="" id="description-job" cols="30" rows="5"></textarea>
+                        <textarea name="" id="description-job" cols="30" rows="5" class="p-2"></textarea>
                         <label for="">Descripción detallada</label>
-                        <textarea name="" id="description-details-job" cols="30" rows="5"></textarea>
+                        <textarea name="" id="description-details-job" cols="30" rows="5" class="p-2"></textarea>
                         
                     </div>
                     <div>
@@ -179,15 +196,17 @@
                             <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="creatures" id=""> Cuidado de Criaturas Mágicas</label>
                             <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="defense" id=""> Defensa contra las Artes Oscuras</label>
                         </div>
+                    </form>
                         <div class="flex justify-end mt-3">
+                            <p class="hidden text-green-600 pr-10" id="confirm-add-jobs">Se ha agregado correctamente</p>
                             <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" id="submit-jobs"type="submit">Agregar</button>
-                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" id="edit-jobs"type="submit">Editar</button>
-                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white">Cancelar</button>
+                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" id="edit-jobs">Editar</button>
+                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white" id="cancel-job">Cancelar</button>
                             
                         </div>
                     </div>
                 </div>
-            </form>
+            
                 
         </section>
     </main>
