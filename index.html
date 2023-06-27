@@ -156,18 +156,25 @@
         <section class="form hidden bg-[url('./assets/img/backgroun-add.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
             <form class="container-form w-full h-auto flex items-center justify-center" id="form">
                 <div class="form-add-jobs p-3 w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
+                    <div class="img-job">
+                        <label for="" class="font-bold p-2">Url imagen</label>
+                        <input type="text">
+                        <div class="container-img">
+                            <img src="" alt=""class="  object-cover w-80 h:52 md:w-52 md:h-80 p-5" id="img-job">
+                        </div>
+                    </div>
                     <div class="p-5 flex flex-col">
-                        <label for="">Nombre</label>
+                        <label for="" class="font-bold">Nombre</label>
                         <input type="text" id="name-job" class="p-2">
-                        <label for="">Descripción</label>
+                        <label for="" class="font-bold">Descripción</label>
                         <textarea name="" id="description-job" cols="30" rows="5" class="p-2"></textarea>
-                        <label for="">Descripción detallada</label>
+                        <label for="" class="font-bold">Descripción detallada</label>
                         <textarea name="" id="description-details-job" cols="30" rows="5" class="p-2"></textarea>
                         
                     </div>
                     <div>
                         <div class="pb-3 flex-col md:flex-row ">
-                            <label for="">Ubicación</label>
+                            <label for="" class="font-bold">Ubicación</label>
                             <select name="location" id="location">
                                 <option value="remote">Remoto</option>
                                 <option value="presencial">Presencial</option>
@@ -180,7 +187,7 @@
                             </select>
                                 
                             <div class="mt-3">
-                                <label for="" class="md:pl-3">Sueldo</label>
+                                <label for="" class="md:pl-3 font-bold">Sueldo</label>
                                 <input type="number" name="" id="salary">
                             </div>
                         </div>

@@ -38,13 +38,22 @@ const addJobs = () => {
             body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
     })
 }
+const editedJobs = (id) => {
+    fetch(`${urlBase}/${id}`, {
+        method: "PUT",
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
+    }).finally(() => window.location.reload())
+}
 
 const deleteJobs = (id) => {
     fetch(`${urlBase}/${id}`, {
         method: "DELETE",
     }).finally(() => window.location.reload())
-
 }
+
 // renders 
 const renderCardsJobs = (jobs) => {
     showElement(".spinner")
@@ -158,11 +167,11 @@ const openForm = () => {
 const editJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
-    $("#location").value = location
-    //$("#membreship").selected = organitation.membership
+    $("#location").selected = location
+    $("#membreship").selected = organitation.membership
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
-
+    $("#img-job").src = image
 }
 
 $("#submit-jobs").addEventListener("click", (e) => {
@@ -174,7 +183,12 @@ $("#submit-jobs").addEventListener("click", (e) => {
         hideElement("#confirm-add-jobs")
         } ,2000)
 })
-
+$("#edit-jobs").addEventListener("click", (e)=> {
+    e.preventDefault()
+    const jobId = $("#edit-jobs").getAttribute("data-id")
+    console.log(jobId)
+    editedJobs(jobId)
+})
 
 //burguer menu
 $("#btn-menu").addEventListener("click", (e) => {
