@@ -25,7 +25,7 @@ const getDetailsJobs = (id) => {
     .then(response => response.json())
     .then(job => {
             renderJobsDetails(job)
-            editJob(job)
+            formEditJob(job)
     })
 }
 
@@ -112,11 +112,12 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
     
 }
 
-// save jobs
+// function save jobs
 const saveJobs = () =>{
+
     return {
         name: $("#name-job").value,
-        image: "https://pm1.aminoapps.com/6875/45b11445c8860dc4385e7c09df22be149ca03155r1-512-384v2_hq.jpg",
+        image: $("#img-job").value,
         description: $("#description-job").value,
         location: $("#location").selected,
         organitation: {
@@ -135,8 +136,7 @@ const saveJobs = () =>{
     }
 }
 
-// open
-
+// open details jobs
 const openDetails = (id) => {
     hideElement(".hero")
     hideElement(".search")
@@ -149,6 +149,7 @@ const openDetails = (id) => {
     
 }
 
+//open form 
 const openForm = () => {
     for (const btn of $$("#open-form")){
         btn.addEventListener("click", () => {
@@ -164,7 +165,8 @@ const openForm = () => {
     
 }
 
-const editJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
+
+const formEditJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
     $("#location").selected = location
@@ -172,6 +174,12 @@ const editJob = ({name, image, description, location, organitation, salary, know
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
     $("#img-job").src = image
+    $("#knowledge-job").selected = knowledge.options
+    $("#url-img-job").value = image
+    $("#url-img-job").addEventListener("input", () => {
+        const urlImage = $("#url-img-job").value
+        $("#img-job").src = urlImage
+    })
 }
 
 $("#submit-jobs").addEventListener("click", (e) => {
@@ -183,10 +191,10 @@ $("#submit-jobs").addEventListener("click", (e) => {
         hideElement("#confirm-add-jobs")
         } ,2000)
 })
+
 $("#edit-jobs").addEventListener("click", (e)=> {
     e.preventDefault()
     const jobId = $("#edit-jobs").getAttribute("data-id")
-    console.log(jobId)
     editedJobs(jobId)
 })
 

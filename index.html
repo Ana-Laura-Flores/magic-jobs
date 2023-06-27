@@ -18,15 +18,15 @@
 <body>
     
     <header>
-        <nav class="h-30  bg-gradient-to-r from-zinc-950 to-sky-900	 ">
-            <div class="container flex w-screen items-center justify-center px-10">
+        <nav class="h-30 w-full  bg-gradient-to-r from-zinc-950 to-sky-900	 ">
+            <div class="container flex w-full items-center justify-center px-5">
                 <div class="img-container p-4 w-1/2">
                     <a href="./index.html">
                         <img class="w-36"src="./assets/img/magic-jobs.png" alt="logo magic jobs">
                     </a>
                 </div>
                 <div class="nav-burguer w-1/2 flex justify-end lg:hidden">
-                    <i class="fas fa-bars text-white text-4xl flex justify-end items-center	 p-5" id="btn-menu"></i>
+                    <i class="fas fa-bars text-white text-4xl flex justify-end items-center	 p-1" id="btn-menu"></i>
                     <span class=" hidden text-white text-4xl flex justify-end items-center	 p-5 " id="btn-menu-close">&times;
                     </span>
                 </div>
@@ -44,15 +44,15 @@
             </div>
         </nav>
         <!--  dropdown -->
-    <div class="flex items-center justify-end w-full p-5 hidden bg-gradient-to-r to-zinc-950 from-sky-900 lg:hidden" id="dropdown">
+    <div class="flex items-center justify-end w-full p-2 pr-8  text-right hidden bg-gradient-to-r to-zinc-950 from-sky-900 lg:hidden" id="dropdown">
         <ul class="flex flex-col ">
-            <li class="p-5 font-bold text-white hover:text-slate-500 ">
+            <li class="p-2 font-bold text-white hover:text-slate-500 ">
                 <a href="#">Buscar Trabajos</a>
             </li>
-            <li class="p-5 font-bold text-white hover:text-slate-500 ">
+            <li class="p-2 font-bold text-white hover:text-slate-500 ">
                 <a href="#jobs">Ver Trabajos</a>
             </li>
-            <li class="p-5 font-bold text-white hover:text-slate-500 " id="open-form">
+            <li class="p-2 font-bold text-white hover:text-slate-500 " id="open-form">
                 <a href="#">Agregar Trabajo</a>
             </li>
         </ul>
@@ -155,10 +155,10 @@
         </section>
         <section class="form hidden bg-[url('./assets/img/backgroun-add.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
             <form class="container-form w-full h-auto flex items-center justify-center" id="form">
-                <div class="form-add-jobs p-3 w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
+                <div class="form-add-jobs p-3 w-11/12 md:w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
                     <div class="img-job">
                         <label for="" class="font-bold p-2">Url imagen</label>
-                        <input type="text">
+                        <input type="text" id="url-img-job">
                         <div class="container-img">
                             <img src="" alt=""class="  object-cover w-80 h:52 md:w-52 md:h-80 p-5" id="img-job">
                         </div>
@@ -191,7 +191,7 @@
                                 <input type="number" name="" id="salary">
                             </div>
                         </div>
-                        <div class="knowledge-options flex flex-col">
+                        <div class="knowledge-options flex flex-col" id="knowledge-job"> 
                             <div><h3 class="font-bold pb-3">Conocimientos Necesarios</h3></div>
                             <label for="" class="py-0.7"><input class="h-4 w-4 "type="radio" name="transformations" id="" > Transformaciones</label>
                             <label for="" class="py-0.7"><input class="form-checkbox h-4 w-4  rounded-full bg-pink-500 transition duration-200 ease-in-out" type="radio" name="incantations" id=""> Encantamientos</label>
