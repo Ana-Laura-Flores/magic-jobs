@@ -169,23 +169,38 @@ const openForm = () => {
 const formEditJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
-    $("#location").selected = location
-    $("#membreship").selected = organitation.membership
+    $("#location").value = location.toLowerCase()
+    $("#membership").value = organitation.membership
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
     $("#img-job").src = image
     $("#knowledge-job").selected = knowledge.options
     $("#url-img-job").value = image
-    $("#url-img-job").addEventListener("input", () => {
-        const urlImage = $("#url-img-job").value
-        $("#img-job").src = urlImage
-    })
+    console.log(organitation.membership)
+   
+}
+
+// checkbox
+
+const checkboxes = $$('input[type="checkbox"]');
+console.log(checkboxes.length)
+const limit = 3; // Define el límite de checkboxes seleccionados
+
+for (let i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].addEventListener("change", () => {
+    const checkedCount = $$('input[type="checkbox"]:checked').length;
+    
+    if (checkedCount > limit) {
+      this.checked = false; // Deselecciona el checkbox excedido
+    }
+  });
 }
 
 $("#submit-jobs").addEventListener("click", (e) => {
     e.preventDefault()
     $("#form").reset()
     showElement("#confirm-add-jobs")
+    
     setTimeout(() => {
         addJobs()
         hideElement("#confirm-add-jobs")
@@ -231,8 +246,14 @@ $("#cancel-job").addEventListener("click", () => {
     showElement(".jobs")
 })
 
+$("#url-img-job").addEventListener("input", () => {
+    const urlImage = $("#url-img-job").value
+    $("#img-job").src = urlImage
+})
 
+window.addEventListener("load", () => {
+    getJobs()
+    openForm()
+})
 
-getJobs()
-openForm()
 
