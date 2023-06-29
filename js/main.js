@@ -45,7 +45,7 @@ const editedJobs = (id) => {
                 'Content-Type': 'Application/json'
             },
             body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
-    }).finally(() => window.location.reload())
+    })
 }
 
 const deleteJobs = (id) => {
@@ -62,6 +62,7 @@ const renderCardsJobs = (jobs) => {
         setTimeout(() => {
             hideElement(".spinner")
             for (const { id, name, image, description, location, organitation, knowledge, membership, enmies } of jobs){
+                console.log(image)
                 $("#container-jobs").innerHTML += `
                 <div class="flex flex-col items-center rounded-xl mb-12 p-4 w-80 backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg hover:scale-105">
                     <div class="container-img"><img src="${image}" class="object-cover h-48 w-96 "alt="${name}"></div>
@@ -120,12 +121,12 @@ const saveJobs = () =>{
 
     return {
         name: $("#name-job").value,
-        image: $("#img-job").value,
+        image: $("#url-img-job").value,
         description: $("#description-job").value,
         location: $("#location").selected,
         organitation: {
                         intention: "Terminar con los Magos Oscuros",
-                        membership: $("#membreship").selected,
+                        membership:  $("#membership").value,
                         enemies: "Mortífagos"
                     },
         salary: $("#salary").value,
@@ -185,7 +186,7 @@ const formEditJob = ({name, image, description, location, organitation, salary, 
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
     $("#img-job").src = image
-    $("#knowledge-job").selected = knowledge.options
+    //$("#knowledge-job").selected = knowledge.options
     $("#url-img-job").value = image
     console.log(organitation.membership)
     
@@ -216,6 +217,7 @@ $("#submit-jobs").addEventListener("click", (e) => {
     e.preventDefault()
     $("#form").reset()
     showElement("#confirm-add-jobs")
+    console.log(saveJobs())
     
     setTimeout(() => {
         addJobs()
@@ -227,6 +229,7 @@ $("#edit-jobs").addEventListener("click", (e)=> {
     e.preventDefault()
     const jobId = $("#edit-jobs").getAttribute("data-id")
     editedJobs(jobId)
+    console.log(saveJobs())
 })
 
 //burguer menu
@@ -266,18 +269,18 @@ $("#url-img-job").addEventListener("input", () => {
     const urlImage = $("#url-img-job").value
     $("#img-job").src = urlImage
 })
-
+let knowledge = [];
 const checkboxes = document.getElementsByName("knowledge");
 console.log(checkboxes)
-    let selecciones = [];
+    
 
     for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener("change", () => {
         console.log(checkboxes[i])
         if (checkboxes[i].checked) {
-            selecciones.push(checkboxes[i].value);
+            knowledge.push(checkboxes[i].value);
           }
-          console.log(selecciones)
+          console.log(knowledge)
     })   
       
 
