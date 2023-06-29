@@ -113,6 +113,9 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
 }
 
 // function save jobs
+
+
+
 const saveJobs = () =>{
 
     return {
@@ -147,9 +150,16 @@ const openDetails = (id) => {
     showElement(".jobs-details")
     getDetailsJobs(id)
     
+    
 }
 
+   
+
+
+
+
 //open form 
+
 const openForm = () => {
     for (const btn of $$("#open-form")){
         btn.addEventListener("click", () => {
@@ -161,8 +171,9 @@ const openForm = () => {
             hideElement("#edit-jobs")
             hideElement(".jobs-details")
         })
+       
     }
-    
+   
 }
 
 
@@ -177,24 +188,29 @@ const formEditJob = ({name, image, description, location, organitation, salary, 
     $("#knowledge-job").selected = knowledge.options
     $("#url-img-job").value = image
     console.log(organitation.membership)
+    
    
 }
 
 // checkbox
 
-const checkboxes = $$('input[type="checkbox"]');
-console.log(checkboxes.length)
+    
+
 const limit = 3; // Define el límite de checkboxes seleccionados
 
-for (let i = 0; i < checkboxes.length; i++) {
-  checkboxes[i].addEventListener("change", () => {
-    const checkedCount = $$('input[type="checkbox"]:checked').length;
-    
-    if (checkedCount > limit) {
-      this.checked = false; // Deselecciona el checkbox excedido
-    }
-  });
-}
+
+// for (let i = 0; i < checkboxes.length; i++) {
+//   checkboxes[i].addEventListener("change", () => {
+//       let checkedCount = 0
+      
+//         if(checkboxes[i].checked()){
+//             checkedCount ++ 
+//         }
+//         if (checkedCount > limit) {
+//             checkboxes[i].getAttribute("disabled", "") // Deselecciona el checkbox excedido
+//             }
+//   });
+// }
 
 $("#submit-jobs").addEventListener("click", (e) => {
     e.preventDefault()
@@ -251,6 +267,21 @@ $("#url-img-job").addEventListener("input", () => {
     $("#img-job").src = urlImage
 })
 
+const checkboxes = document.getElementsByName("knowledge");
+console.log(checkboxes)
+    let selecciones = [];
+
+    for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener("change", () => {
+        console.log(checkboxes[i])
+        if (checkboxes[i].checked) {
+            selecciones.push(checkboxes[i].value);
+          }
+          console.log(selecciones)
+    })   
+      
+
+}  
 window.addEventListener("load", () => {
     getJobs()
     openForm()

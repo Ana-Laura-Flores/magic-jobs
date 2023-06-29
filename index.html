@@ -160,22 +160,20 @@
                         <label for="" class="font-bold p-2">Url imagen</label>
                         <input type="text" id="url-img-job">
                         <div class="container-img">
-                            <img src="" alt=""class="  object-cover w-80 h:52 md:w-52 md:h-80 p-5" id="img-job">
+                            <img src="./assets/icons/sombrero.jpg" alt=""class="  object-cover w-80 h:52 md:w-72 md:h-80 p-5" id="img-job">
                         </div>
-                    </div>
-                    <div class="p-5 flex flex-col">
                         <label for="" class="font-bold">Nombre</label>
                         <input type="text" id="name-job" class="p-2">
-                        <label for="" class="font-bold">Descripción</label>
-                        <textarea name="" id="description-job" cols="30" rows="5" class="p-2"></textarea>
-                        <label for="" class="font-bold">Descripción detallada</label>
-                        <textarea name="" id="description-details-job" cols="30" rows="5" class="p-2"></textarea>
-                        
                     </div>
-                    <div>
-                        <div class="pb-3 flex-col md:flex-row ">
-                            <label for="" class="font-bold">Ubicación</label>
-                            <select name="location" id="location">
+                    <div class="p-5 flex flex-col md:w-2/6">
+                        
+                        <label for="" class="font-bold py-3">Descripción</label>
+                        <textarea name="" id="description-job" cols="30" rows="3" class="p-2"></textarea>
+                        <label for="" class="font-bold py-3">Descripción detallada</label>
+                        <textarea name="" id="description-details-job" cols="30" rows="5" class="p-2 "></textarea>
+                        <label for="" class="font-bold py-3">Ubicación</label>
+                        <div class="pb-3  flex-col md:flex-row">
+                            <select name="location" id="location" class="mb-3">
                                 <option value="remoto" name="location">Remoto</option>
                                 <option value="presencial"name="location" >Presencial</option>
                             </select>
@@ -186,7 +184,11 @@
                                 <option value="Hospital San Mungo" name="membership">Hospital San Mungo</option>
                                 <option value="Otras Ocupaciones" name="membership">Otras Ocupaciones</option>
                             </select>
-                                
+                        </div>
+                    </div>
+                    <div>
+                        <div class="pb-3 flex-col md:flex-row ">
+                    
                             <div class="mt-3">
                                 <label for="" class="md:pl-3 font-bold">Sueldo</label>
                                 <input type="number" name="" id="salary">
@@ -194,18 +196,73 @@
                         </div>
                         <div class="knowledge-options flex flex-col" id="knowledge-job"> 
                             <div><h3 class="font-bold pb-3">Conocimientos Necesarios</h3></div>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 "type="radio" name="transformations" id="" > Transformaciones</label>
-                            <label for="" class="py-0.7"><input class="form-checkbox h-4 w-4  rounded-full bg-pink-500 transition duration-200 ease-in-out" type="radio" name="incantations" id=""> Encantamientos</label>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="herbology" id=""> Herbología</label>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="brooms" id=""> Escobas</label>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="varitology" id=""> Varitología</label>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="potions" id=""> Pociones</label>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="stealth" id=""> Disimulo y Rastreo</label>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="creatures" id=""> Cuidado de Criaturas Mágicas</label>
-                            <label for="" class="py-0.7"><input class="h-4 w-4 " type="radio" name="defense" id=""> Defensa contra las Artes Oscuras</label>
+                            <div  id="knowledge" class="flex ">
+                            <label for=""  class="py-0.7">
+                                <div class="container-knowledge flex flex-col">
+                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                                                     
+                                    <img src="./assets/icons/transformaciones.png" class="w-6 h-6 mr-2 "alt="">Transformaciones
+                                    <input class="h-3 w-3 ml-2 "type="checkbox" name="knowledge" value="transformations" id="transformations" >
+                                    </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/encantamientos.png" class="w-6 h-6 mr-2 "alt="">Encantamientos
+                                    <input class="form-checkbox h-3 w-3 ml-2 " type="checkbox"  name="knowledge"value="incantations" id="incantations"> 
+                                    
+                            
+                                    </div>
+                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/herbologia.png" class="w-6 h-6 mr-2 "alt=""> Herbología
+                                    <input class="h-3 w-3 ml-2" type="checkbox"name="knowledge" value="herbology" id="herbology">
+                                    
+                                    
+                                    </div>
+                                </div>
+                                <div class="container-knowledge flex flex-col">
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/escobas.png" class="w-6 h-6 mr-2 "alt="">Escobas
+                                     <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="brooms" id="brooms"> 
+                                    
+                                    
+                                    </div>
+                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/varitologia.png" class="w-6 h-6 mr-2 "alt="">Varitología
+                                    <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="varitology" id="varitology">
+                                    
+                                    
+                                    </div>
+                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/pociones.png" class="w-6 h-6 mr-2 "alt="">Pociones
+                                     <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="potions" id="potions">
+                                    
+                                    
+                                    </div>
+                                </div>
+                                <div class="container-knowledge flex flex-col">
+                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/elfos.png" class="w-6 h-6 mr-2 "alt="">
+                                    Disimulo y Rastreo
+                                     <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="stealth" id="stealth">
+                                   
+                                   
+                                    </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    
+                                    <img src="./assets/icons/criaturasMagicas.png" class="w-6 h-6 mr-2 "alt="">
+                                    Cuidado de Criaturas Mágicas
+                                    <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="creatures" id="creatures"> 
+                                    
+                                    </div>
+                             <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                <img src="./assets/icons/encantamientos.png" class="w-6 h-6 mr-2 "alt="">
+                                Defensa contra las Artes Oscuras
+                                <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="defense" id="defense">
+                            </div>
+                                </div>
+                            </label>
+                            </div>
                         </div>
                     </form>
-                        <div class="flex justify-end mt-3">
+                        <div class="flex justify-end mt-10">
                             <p class="hidden text-green-600 pr-10" id="confirm-add-jobs">Se ha agregado correctamente</p>
                             <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" id="submit-jobs"type="submit">Agregar</button>
                             <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" id="edit-jobs">Editar</button>
