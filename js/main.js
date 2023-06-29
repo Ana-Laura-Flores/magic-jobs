@@ -25,18 +25,18 @@ const getDetailsJobs = (id) => {
     .then(response => response.json())
     .then(job => {
             renderJobsDetails(job)
-            formEditJob(job)
+            formJob(job)
     })
 }
 
 const addJobs = () => {
-    fetch(urlBase, {
+    fetch(`${urlBase}`, {
         method: "POST",
             headers: {
                 'Content-Type': 'Application/json'
             },
             body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
-    })
+    }).finally(() => window.location.reload())
 }
 const editedJobs = (id) => {
     fetch(`${urlBase}/${id}`, {
@@ -45,7 +45,7 @@ const editedJobs = (id) => {
                 'Content-Type': 'Application/json'
             },
             body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
-    })
+    }).finally(() => window.location.reload())
 }
 
 const deleteJobs = (id) => {
@@ -95,7 +95,6 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
                                 <li>${knowledge[0]}</li>
                                 <li>${knowledge[1]}</li>
                                 <li>${knowledge[2]}</li>
-                                <li>${knowledge[3]}</li>
                             </ul> 
                         </div>
                         <div class="enemies-details pt-3">Enemigos con quien debe pelear: ${organitation.enemies}</div>
@@ -131,10 +130,9 @@ const saveJobs = () =>{
                     },
         salary: $("#salary").value,
         knowledge: [
-            "Disimulo y Rastreo ",
-            "Transformaciones",
-            "Encantamientos",
-            "Pociones"
+            knowledge[0],
+            knowledge[1],
+            knowledge[2],
             ],
         descriptionDetails: $("#description-details-job").value,
     }
@@ -177,11 +175,10 @@ const openForm = () => {
    
 }
 
-
-const formEditJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
+const formJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
-    $("#location").value = location.toLowerCase()
+    $("#location").selected = location.toLowerCase()
     $("#membership").value = organitation.membership
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
@@ -189,8 +186,6 @@ const formEditJob = ({name, image, description, location, organitation, salary, 
     //$("#knowledge-job").selected = knowledge.options
     $("#url-img-job").value = image
     console.log(organitation.membership)
-    
-   
 }
 
 // checkbox
@@ -215,7 +210,7 @@ const limit = 3; // Define el límite de checkboxes seleccionados
 
 $("#submit-jobs").addEventListener("click", (e) => {
     e.preventDefault()
-    $("#form").reset()
+    
     showElement("#confirm-add-jobs")
     console.log(saveJobs())
     
@@ -270,17 +265,23 @@ $("#url-img-job").addEventListener("input", () => {
     $("#img-job").src = urlImage
 })
 let knowledge = [];
+let count = 0
 const checkboxes = document.getElementsByName("knowledge");
 console.log(checkboxes)
     
 
     for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener("change", () => {
+    checkboxes[i].addEventListener("click", () => {
         console.log(checkboxes[i])
-        if (checkboxes[i].checked) {
+        if (checkboxes[i].checked && count < 3) {
             knowledge.push(checkboxes[i].value);
+            count ++
+          } else {
+            checkboxes[i].checked = false
+            checkboxes[i].disabled = true
           }
-          console.log(knowledge)
+
+        console.log(knowledge)
     })   
       
 
