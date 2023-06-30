@@ -70,52 +70,54 @@
             <img src="./assets/img/spinner01.png" alt="spiner snicht dorada" id="spinner-01" class="w-1/5">
             <img src="./assets/img/spinner02.png" alt="spiner snicht dorada" id="spinner-02" class="w-1/5">
         </div>
-        <section class="search w-full flex flex-col content-end justify-center bg-gradient-to-r to-zinc-950 from-sky-900 h-auto">
-            <article class="p-7 lg:pl-24 lg:px-24 ">
-                <div class="keypad flex flex-col justify-center lg:justify-start lg:flex-row w-1/2  ">
-                <div class="flex flex-col lg:flex-row">
-                   <div class="container flex flex-col">
-                        <label for="" class="font-bold text-base text-white p-1 mx-2 ">Ubicación Laboral</label>
-                        <button class="w-3/4 lg:w-40 h-14 mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="open-select-location">Buscar por Locación</button>
-                        <select class="w-3/4 hidden lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="params-location">
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos">Todos</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Remoto">Remoto</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Presencial">Presencial</option>
-                        </select>
-                   </div>
-                    <div class="container flex flex-col ">
-                        <label for=""class="font-bold text-base text-white p-1 mx-2 ">Perteneciente a:</label>
-                        <button class="bg-white w-3/4 lg:w-40 h-14 mr-3 rounded-md font-bold text-black p-1 m-2 my-2 hover:scale-105" id="open-select-membership">Buscar por organización</button>
-                        <select class="btn hidden bg-white w-3/4 lg:w-40 h-auto mr-3 rounded-md font-bold text-black p-1 m-2 my-2 hover:scale-105" id="params-membership">
-                            <option value="Todos" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Todos</option>
-                            <option value="Ministerio" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Ministerio de Magia</option>
-                            <option value="Hogwarts" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hogwarts</option>
-                            <option value="Gringot" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Gringot</option>
-                            <option value="Hospital" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hospital San Mungo</option>
-                            <option value="Otras" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Hogsmeade</option>
-                        </select>
-                     </div>  
-                     <div class="container flex flex-col">
-                        <label for="" class="font-bold text-base text-white p-1 mx-2 ">Conocimientos</label>
-                        <button class="w-3/4 lg:w-40 h-14 mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="open-select-knowledge">Buscar por Conocimientos</button>
-                        <select class="btn hidden w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105"id="params-knowledge" disabled>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos">Todos</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Transformaciones">Transformaciones</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Herbología">Herbología</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Pociones">Pociones</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Encantamientos">Encantamientos</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Defensa">Defensa</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Varitología">Varitología</option>
-                        </select>
-                   </div>
-                </div>
-                     <div class="container-buttons flex items-end justify-between	m-2 my-2 ">
-                        <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-sky-700" id="filter-jobs">Buscar</button>
-                        <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-cyan-900">Limpiar</button>
-                     </div>
-                </div>
-            </article>
-        </section>
+        <form action="" id="form-filter">
+            <section class="search w-full flex flex-col content-end justify-center bg-gradient-to-r to-zinc-950 from-sky-900 h-auto">
+                <article class="p-7 lg:pl-24 lg:px-24 ">
+                    <div class="keypad flex flex-col justify-center lg:justify-start lg:flex-row w-1/2  ">
+                    <div class="flex flex-col lg:flex-row">
+                    <div class="container flex flex-col">
+                            <label for="" class="font-bold text-base text-white p-1 mx-2 ">Ubicación Laboral</label>
+                            <button class="w-3/4 lg:w-40 h-14 mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="open-select-location">Buscar por Locación</button>
+                            <select class="w-3/4 hidden lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="params-location">
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="" data-name="location=">Todos</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Remoto">Remoto</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Presencial">Presencial</option>
+                            </select>
+                    </div>
+                        <div class="container flex flex-col ">
+                            <label for=""class="font-bold text-base text-white p-1 mx-2 ">Perteneciente a:</label>
+                            <button class="bg-white w-3/4 lg:w-40 h-14 mr-3 rounded-md font-bold text-black p-1 m-2 my-2 hover:scale-105" id="open-select-membership">Buscar por organización</button>
+                            <select class="btn hidden bg-white w-3/4 lg:w-40 h-auto mr-3 rounded-md font-bold text-black p-1 m-2 my-2 hover:scale-105" id="params-membership">
+                                <option value="Todos" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Todos</option>
+                                <option value="Ministerio" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Ministerio de Magia</option>
+                                <option value="Hogwarts" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hogwarts</option>
+                                <option value="Gringot" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Gringot</option>
+                                <option value="Hospital" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hospital San Mungo</option>
+                                <option value="Hogsmeade" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Hogsmeade</option>
+                            </select>
+                        </div>  
+                        <div class="container flex flex-col">
+                            <label for="" class="font-bold text-base text-white p-1 mx-2 ">Conocimientos</label>
+                            <button class="w-3/4 lg:w-40 h-14 mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="open-select-knowledge">Buscar por Conocimientos</button>
+                            <select class="btn hidden w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105"id="params-knowledge">
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos">Todos</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Transformaciones">Transformaciones</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Herbología">Herbología</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Pociones">Pociones</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Encantamientos">Encantamientos</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Defensa">Defensa</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Varitología">Varitología</option>
+                            </select>
+                    </div>
+                    </div>
+                        <div class="container-buttons flex items-end justify-between	m-2 my-2 ">
+                            <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-sky-700" id="filter-jobs">Buscar</button>
+                            <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-cyan-900" id="reset-filter">Limpiar</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </form>
           
         <section class="cards w-full h-auto p-8  bg-[url(./assets/img/background-jobs-2.jpg)] bg-repeat " id="jobs">
             <article>

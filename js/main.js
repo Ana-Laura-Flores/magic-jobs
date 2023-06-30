@@ -4,6 +4,8 @@ const hideElement = (selector) => $(selector).classList.add('hidden')
 const showElement = (selector) => $(selector).classList.remove('hidden')
 const cleanContainer = (selector) => $(selector).innerHTML = ""
 
+const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
+
 // function mouse
 document.addEventListener("mousemove", (e) => {
     let imagen = $("#sombrero");
@@ -14,7 +16,8 @@ document.addEventListener("mousemove", (e) => {
   });
 // funtion auxiliar disbles selects
 const disabledSelects = () => {
-    $("#open-select-location").addEventListener("click", () => {
+    $("#open-select-location").addEventListener("click", (e) => {
+        e.preventDefault()
         hideElement("#open-select-location")
         showElement("#params-location")
         showElement("#open-select-membership")
@@ -23,7 +26,8 @@ const disabledSelects = () => {
         hideElement("#params-knowledge")
     })
 
-    $("#open-select-membership").addEventListener("click", () => {
+    $("#open-select-membership").addEventListener("click", (e) => {
+        e.preventDefault()
         hideElement("#open-select-membership")
         showElement("#params-membership")
         showElement("#open-select-location")
@@ -32,7 +36,8 @@ const disabledSelects = () => {
         hideElement("#params-knowledge")
     })
 
-    $("#open-select-knowledge").addEventListener("click", () => {
+    $("#open-select-knowledge").addEventListener("click", (e) => {
+        e.preventDefault()
         hideElement("#open-select-knowledge")
         showElement("#params-knowledge")
         showElement("#open-select-membership")
@@ -43,29 +48,6 @@ const disabledSelects = () => {
 }
 
 disabledSelects()
-
-// const desactivarSelect = () => {
-//     const select1 = $("#params-location");
-//     const select2 = $("#params-membership");
-//     const select3 = $("#params-knowledge");
-
-//     if (select1 === "") {
-//       select2.disabled = false;
-//       select3.disabled = false
-//     } else if (select2.value !== ""){
-//       select2.disabled = false;
-//       select1.disabled = true;
-//       select3.disabled = true
-//     } else {
-//       select2.disabled = true;
-//       select1.disabled = true;
-//       select3.disabled = true
-//     }
-//   }
-
-
-
-const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
 
 const getJobs = (params) => {
     fetch(`${urlBase}${params ? `?${params}` : ""}`)
@@ -80,22 +62,9 @@ const getDetailsJobs = (id) => {
             formJob(job)
     })
 }
-// fetch with params
-// const getJobs = (params) => {
-//     fetch(`${urlBase}${params ? `?${params}` : ""}`)
-//     .then(response => response.json())
-//     .then(jobs => renderCardsJobs(jobs))
-// }
-$("#filter-jobs").addEventListener("click", () => {
-    getJobs("location=Presencial")
-})
-/*
-const getJobs = (params) => {
-    fetch(`${urlBase}${params ? `?${params}` : ""}`)
-    .then(response => response.json())
-    .then(jobs => renderCardsJobs(jobs))
-}
-*/
+
+
+
 const addJobs = () => {
     fetch(`${urlBase}`, {
         method: "POST",
@@ -112,7 +81,7 @@ const editedJobs = (id) => {
                 'Content-Type': 'Application/json'
             },
             body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
-    })//.finally(() => window.location.reload())
+    }).finally(() => window.location.reload())
 }
 
 const deleteJobs = (id) => {
@@ -333,15 +302,56 @@ $("#url-img-job").addEventListener("input", () => {
     $("#img-job").src = urlImage
 })
 
+// btn reset filters
+$("#reset-filter").addEventListener("click", (e) => {
+    e.preventDefault()
+    $("#form-filter").reset()
+    showElement("#open-select-knowledge")
+    hideElement("#params-knowledge")
+    showElement("#open-select-membership")
+    hideElement("#params-membership")
+    showElement("#open-select-location")
+    hideElement("#params-location")
+    getJobs()
+})
 // is selected
-
+let urlParams = ""
 const filterParams = () => {
-    const location = $("#params-location").value
-    return location
+    $("#params-location").addEventListener("change",() => {
+        const valorFilter = $("#params-location").value
+        const urlParamsLocation = `location=${valorFilter}`
+        if(valorFilter != "") {
+            console.log(urlParams = urlParamsLocation)
+        } else {
+            return ""
+        }
+    })
+    $("#params-membership").addEventListener("change",() => {
+        const valorFilter = $("#params-membership").value
+        const urlParamsLocation = `membership=${valorFilter}`
+        if(valorFilter != "") {
+            return urlParams = urlParamsLocation
+        } else {
+            return ""
+        }
+    })
+    $("#params-knowledge").addEventListener("change",() => {
+        const valorFilter = $("#params-knowledge").value
+        const urlParamsLocation = `knowledge=${valorFilter}`
+        if(valorFilter != "") {
+            return urlParams = urlParamsLocation
+        } else {
+            return ""
+        }
+    })
 }
-$("#params-location").addEventListener("change", filterParams)
-
-
+filterParams()
+console.log(urlParams)
+//filterParams()
+$("#filter-jobs").addEventListener("click", (e) => {
+    e.preventDefault()
+    getJobs(urlParams)
+})
 
 // checkbox
 
