@@ -12,11 +12,11 @@ document.addEventListener("mousemove", (e) => {
     imagen.style.left = (x + imagen.width / 3 ) + "px";
     imagen.style.top = (y + imagen.width / 3 ) + "px";
   });
-
+// funtion auxiliar
 const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
 
-const getJobs = () => {
-    fetch(urlBase)
+const getJobs = (params) => {
+    fetch(`${urlBase}${params ? `?${params}` : ""}`)
     .then(response => response.json())
     .then(jobs => renderCardsJobs(jobs))
 }
@@ -28,7 +28,22 @@ const getDetailsJobs = (id) => {
             formJob(job)
     })
 }
-
+// fetch with params
+// const getJobs = (params) => {
+//     fetch(`${urlBase}${params ? `?${params}` : ""}`)
+//     .then(response => response.json())
+//     .then(jobs => renderCardsJobs(jobs))
+// }
+$("#filter-jobs").addEventListener("click", () => {
+    getJobs("location=Presencial")
+})
+/*
+const getJobs = (params) => {
+    fetch(`${urlBase}${params ? `?${params}` : ""}`)
+    .then(response => response.json())
+    .then(jobs => renderCardsJobs(jobs))
+}
+*/
 const addJobs = () => {
     fetch(`${urlBase}`, {
         method: "POST",
@@ -265,6 +280,16 @@ $("#url-img-job").addEventListener("input", () => {
     const urlImage = $("#url-img-job").value
     $("#img-job").src = urlImage
 })
+
+// is selected
+
+const filterParams = () => {
+    const location = $("#parmas-locations").value
+    return location
+}
+$("#parmas-locations").addEventListener("change", filterParams)
+
+
 
 // checkbox
 

@@ -76,8 +76,8 @@
                 <div class="flex flex-col lg:flex-row">
                    <div class="container flex flex-col">
                         <label for="" class="font-bold text-base text-white p-1 mx-2 ">Ubicación Laboral</label>
-                        <select class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105">
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Ninguno">Ninguno</option>
+                        <select class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="parmas-locations">
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos">Todos</option>
                             <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Remoto">Remoto</option>
                             <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Presencial">Presencial</option>
                         </select>
@@ -85,25 +85,29 @@
                     <div class="container flex flex-col ">
                         <label for=""class="font-bold text-base text-white p-1 mx-2 ">Perteneciente a:</label>
                         <select class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-bold text-black p-1 m-2 my-2 hover:scale-105">
-                            <option value="Ninguno" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Ninguno</option>
+                            <option value="Todos" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Todos</option>
                             <option value="Ministerio" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Ministerio de Magia</option>
                             <option value="Hogwarts" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hogwarts</option>
                             <option value="Gringot" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Gringot</option>
                             <option value="Hospital" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hospital San Mungo</option>
-                            <option value="Otras" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Otras Ocupaciones</option>
+                            <option value="Otras" class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Hogsmeade</option>
                         </select>
                      </div>  
                      <div class="container flex flex-col">
-                        <label for="" class="font-bold text-base text-white p-1 mx-2 ">Ubicación Laboral</label>
+                        <label for="" class="font-bold text-base text-white p-1 mx-2 ">Conocimientos</label>
                         <select class="btn w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105">
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Ninguno">Ninguno</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Remoto">Remoto</option>
-                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Presencial">Presencial</option>
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos">Todos</option>
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Transformaciones">Transformaciones</option>
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Herbología">Herbología</option>
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Pociones">Pociones</option>
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Encantamientos">Encantamientos</option>
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Defensa">Defensa</option>
+                            <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Varitología">Varitología</option>
                         </select>
                    </div>
                 </div>
                      <div class="container-buttons flex items-end justify-between	m-2 my-2 ">
-                        <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-sky-700">Buscar</button>
+                        <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-sky-700" id="filter-jobs">Buscar</button>
                         <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-cyan-900">Limpiar</button>
                      </div>
                 </div>
@@ -201,7 +205,7 @@
                                 <option value="Gringot" name="membership">Gringot</option>
                                 <option value="Ministerio de Magia" name="membership">Ministerio de Magia</option>
                                 <option value="Hospital San Mungo" name="membership">Hospital San Mungo</option>
-                                <option value="Otras Ocupaciones" name="membership">Otras Ocupaciones</option>
+                                <option value="Hogsmeade" name="membership">Hogsmeade</option>
                             </select>
                         </div>
                     </div>
