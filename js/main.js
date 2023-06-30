@@ -12,7 +12,59 @@ document.addEventListener("mousemove", (e) => {
     imagen.style.left = (x + imagen.width / 3 ) + "px";
     imagen.style.top = (y + imagen.width / 3 ) + "px";
   });
-// funtion auxiliar
+// funtion auxiliar disbles selects
+const disabledSelects = () => {
+    $("#open-select-location").addEventListener("click", () => {
+        hideElement("#open-select-location")
+        showElement("#params-location")
+        showElement("#open-select-membership")
+        hideElement("#params-membership")
+        showElement("#open-select-knowledge")
+        hideElement("#params-knowledge")
+    })
+
+    $("#open-select-membership").addEventListener("click", () => {
+        hideElement("#open-select-membership")
+        showElement("#params-membership")
+        showElement("#open-select-location")
+        hideElement("#params-location")
+        showElement("#open-select-knowledge")
+        hideElement("#params-knowledge")
+    })
+
+    $("#open-select-knowledge").addEventListener("click", () => {
+        hideElement("#open-select-knowledge")
+        showElement("#params-knowledge")
+        showElement("#open-select-membership")
+        hideElement("#params-membership")
+        showElement("#open-select-location")
+        hideElement("#params-location")
+    })
+}
+
+disabledSelects()
+
+// const desactivarSelect = () => {
+//     const select1 = $("#params-location");
+//     const select2 = $("#params-membership");
+//     const select3 = $("#params-knowledge");
+
+//     if (select1 === "") {
+//       select2.disabled = false;
+//       select3.disabled = false
+//     } else if (select2.value !== ""){
+//       select2.disabled = false;
+//       select1.disabled = true;
+//       select3.disabled = true
+//     } else {
+//       select2.disabled = true;
+//       select1.disabled = true;
+//       select3.disabled = true
+//     }
+//   }
+
+
+
 const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
 
 const getJobs = (params) => {
@@ -284,10 +336,10 @@ $("#url-img-job").addEventListener("input", () => {
 // is selected
 
 const filterParams = () => {
-    const location = $("#parmas-locations").value
+    const location = $("#params-location").value
     return location
 }
-$("#parmas-locations").addEventListener("change", filterParams)
+$("#params-location").addEventListener("change", filterParams)
 
 
 
