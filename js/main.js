@@ -9,8 +9,8 @@ document.addEventListener("mousemove", (e) => {
     let imagen = $("#sombrero");
     let x = e.clientX;
     let y = e.clientY;
-    imagen.style.left = (x + imagen.width / 2 ) + "px";
-    imagen.style.top = (y + imagen.width / 2 ) + "px";
+    imagen.style.left = (x + imagen.width / 3 ) + "px";
+    imagen.style.top = (y + imagen.width / 3 ) + "px";
   });
 
 const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
@@ -45,7 +45,7 @@ const editedJobs = (id) => {
                 'Content-Type': 'Application/json'
             },
             body: JSON.stringify(saveJobs()),   // DATO QUE VAMOS A MANDAR
-    }).finally(() => window.location.reload())
+    })//.finally(() => window.location.reload())
 }
 
 const deleteJobs = (id) => {
@@ -61,8 +61,7 @@ const renderCardsJobs = (jobs) => {
         cleanContainer("#container-jobs")
         setTimeout(() => {
             hideElement(".spinner")
-            for (const { id, name, image, description, location, organitation, knowledge, membership, enmies } of jobs){
-                console.log(image)
+            for (const { id, name, image, description } of jobs){
                 $("#container-jobs").innerHTML += `
                 <div class="flex flex-col items-center rounded-xl mb-12 p-4 w-80 backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg hover:scale-105">
                     <div class="container-img"><img src="${image}" class="object-cover h-48 w-96 "alt="${name}"></div>
@@ -76,7 +75,7 @@ const renderCardsJobs = (jobs) => {
     }
 }
 
-const renderJobsDetails = ({ id, name, image, description, descriptionDetails, salary, location, organitation, knowledge }) => {
+const renderJobsDetails = ({ id, name, image, description, membership, descriptionDetails, salary, location, organitation, knowledge }) => {
     showElement(".spinner")
         setTimeout(() => {
             hideElement(".spinner")
@@ -86,7 +85,7 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
                     </div>
                     <div class="w-2/3 p-3">
                         <div class="name-details text-3xl text-[#373737] font-bold">${name}</div>
-                        <div class="membership-details text-xl">${organitation.membership}</div>
+                        <div class="membership-details text-xl">${membership}</div>
                         <div class="description-details text-sm mt-2 "> ${description} ${descriptionDetails}</div>
                         <div class="location-details pt-3">Ubicación laboral: ${location}</div>
                         <div class="salary-details pt-3">Remuneración: ${salary} galeones</div>
@@ -97,10 +96,10 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
                                 <li>${knowledge[2]}</li>
                             </ul> 
                         </div>
-                        <div class="enemies-details pt-3">Enemigos con quien debe pelear: ${organitation.enemies}</div>
+                        <div class="enemies-details pt-3 font-bold">Enemigos con quien debe pelear: <p class="font-normal"> ${organitation.enemies}<p></div>
                         <div class="container-btn-details flex justify-end pt-5">
                             <button class="open-edit-job px-3 rounded-lg mx-5 bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" data-id=${id} onclick="openEdit(${id})">Editar</button>
-                            <button class="delete-job px-3 rounded-lg bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white" data-id=${id}>Eliminar</button>
+                            <button class="delete-job px-3 rounded-lg bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white" data-id=${id} onclick="openModal(${id})">Eliminar</button>
                         </div>
                     </div>
                 `
@@ -114,6 +113,9 @@ const renderJobsDetails = ({ id, name, image, description, descriptionDetails, s
 
 // function save jobs
 
+const openModal = () => {
+    showElement(".modal")
+}
 
 
 const saveJobs = () =>{
@@ -122,10 +124,10 @@ const saveJobs = () =>{
         name: $("#name-job").value,
         image: $("#url-img-job").value,
         description: $("#description-job").value,
-        location: $("#location").selected,
+        location: $("#location").value,
+        membership:  $("#membership").value,
         organitation: {
                         intention: "Terminar con los Magos Oscuros",
-                        membership:  $("#membership").value,
                         enemies: "Mortífagos"
                     },
         salary: $("#salary").value,
@@ -148,14 +150,7 @@ const openDetails = (id) => {
     // $(".delete-job"),addEventListener("click", deleteJobs(id))
     showElement(".jobs-details")
     getDetailsJobs(id)
-    
-    
 }
-
-   
-
-
-
 
 //open form 
 
@@ -175,24 +170,27 @@ const openForm = () => {
    
 }
 
-const formJob = ({name, image, description, location, organitation, salary, knowledge, descriptionDetails}) => {
+const formJob = ({name, image, description, membership, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
-    $("#location").selected = location.toLowerCase()
-    $("#membership").value = organitation.membership
+    $("#location").selected = location
+    $("#membership").value = membership
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
     $("#img-job").src = image
-    //$("#knowledge-job").selected = knowledge.options
+    knowledge[0].checked = knowledge
+    knowledge[1].checked = knowledge
+    knowledge[2].checked = knowledge
     $("#url-img-job").value = image
-    console.log(organitation.membership)
+    checkedBoxes()
+    console.log(knowledge.checked)
 }
 
 // checkbox
 
     
 
-const limit = 3; // Define el límite de checkboxes seleccionados
+//const limit = 3; // Define el límite de checkboxes seleccionados
 
 
 // for (let i = 0; i < checkboxes.length; i++) {
@@ -210,13 +208,11 @@ const limit = 3; // Define el límite de checkboxes seleccionados
 
 $("#submit-jobs").addEventListener("click", (e) => {
     e.preventDefault()
-    
     showElement("#confirm-add-jobs")
-    console.log(saveJobs())
-    
     setTimeout(() => {
         addJobs()
         hideElement("#confirm-add-jobs")
+        
         } ,2000)
 })
 
@@ -224,7 +220,6 @@ $("#edit-jobs").addEventListener("click", (e)=> {
     e.preventDefault()
     const jobId = $("#edit-jobs").getAttribute("data-id")
     editedJobs(jobId)
-    console.log(saveJobs())
 })
 
 //burguer menu
@@ -260,32 +255,126 @@ $("#cancel-job").addEventListener("click", () => {
     showElement(".jobs")
 })
 
+// btn delete
+$("#btn-delete-job").addEventListener("click", () => {
+    const jobId = $(".delete-job").getAttribute("data-id")
+    deleteJobs(jobId)
+})
+
 $("#url-img-job").addEventListener("input", () => {
     const urlImage = $("#url-img-job").value
     $("#img-job").src = urlImage
 })
+
+// checkbox
+
 let knowledge = [];
 let count = 0
+let limit = 3
 const checkboxes = document.getElementsByName("knowledge");
 console.log(checkboxes)
-    
 
+const checkedBoxes = () => {
     for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener("click", () => {
-        console.log(checkboxes[i])
-        if (checkboxes[i].checked && count < 3) {
-            knowledge.push(checkboxes[i].value);
-            count ++
-          } else {
+        const isCheck = checkboxes[i].checked
+        console.log(isCheck)
+        checkboxes[i].addEventListener("change", () => {
+         //console.log(checkboxes[i])
+         if (checkboxes[i].checked && knowledge.length < 3) {
+             knowledge.push(checkboxes[i].value);
+             count ++
+        } else {
             checkboxes[i].checked = false
             checkboxes[i].disabled = true
-          }
-
+            }
         console.log(knowledge)
-    })   
+     })   
+ }  
+}
+     
+
+
+
+/*
+const toggleCheckbox = (checkbox) => {
+    let checkedCount = 0;
+  
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        knowledge.push(checkboxes[i].value)
+        checkedCount++;
+        console.log(knowledge)
+      }
+    }
+  
+    if (checkedCount > limit) {
+      checkbox.checked = false; // Deselecciona el checkbox excedido
+    }
+  }
+  
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener("click", () => {
+      toggleCheckbox(this);
+    });
+  }
+  */ 
+
+
+
+// const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//console.log(checkboxes)
+    // const boxChecked = () => {
+    //     let knowledge = []
+    //     const checkBoxes = document.querySelectorAll('input[type="checkbox"]:checked')
+    //     for (let i =0; i < checkBoxes.length; i++) {
+    //         knowledge.push(checkBoxes[i].value)
+    //         console.log(knowledge)
+    //     }
+
+    //     if (knowledge.length >= 3) {
+    //         const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
+    //         for (let i =0; i < allCheckboxes.length; i++) {
+    //             if (!allCheckboxes[i].checked) {
+    //                 allCheckboxes[i].disabled = true
+    //             }
+    //         }
+            
+            
+    //     } else {
+    //         const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
+    //         for( let i = 0; i< allCheckboxes.length; i++) {
+    //             allCheckboxes[i].disabled = false
+    //         }
+            
+    //     }
+    // }
+    // const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
+    // for (const btn of allCheckboxes){
+    //     btn.addEventListener("change", () => {
+    //         boxChecked()
+    //     })
+        
+    // }
+    
+    // const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
+    // allCheckboxes.addEventListener("cha")
+    // for (let i = 0; i < checkboxes.length; i++) {
+    // checkboxes[i].addEventListener("click", () => {
+    //     console.log(checkboxes[i])
+    //     if (checkboxes.length >= 3) {
+            
+    //         knowledge.push(checkboxes[i].value);
+    //         count ++
+    //       } else {
+    //         checkboxes[i].checked = false
+    //         checkboxes[i].disabled = true
+    //       }
+
+    //     console.log(knowledge)
+    // })   
       
 
-}  
+//}  
 window.addEventListener("load", () => {
     getJobs()
     openForm()
