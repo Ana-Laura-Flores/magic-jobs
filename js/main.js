@@ -123,8 +123,10 @@ const renderJobsDetails = ({ id, name, image, description, membership, descripti
                         <div class="name-details text-3xl text-[#373737] font-bold">${name}</div>
                         <div class="membership-details text-xl">${membership}</div>
                         <div class="description-details text-sm mt-2 "> ${description} ${descriptionDetails}</div>
-                        <div class="location-details pt-3">Ubicación laboral: ${location}</div>
-                        <div class="salary-details pt-3">Remuneración: ${salary} galeones</div>
+                        <div class="location-details pt-3 font-bold">Ubicación laboral: <p class="font-normal">${location}</p></div>
+                        <div class="salary-details pt-3 font-bold">Remuneración: <p class="font-normal">${salary} galeones</p></div>
+                        <div class="enemies-details pt-3 font-bold">Intenciones: <p class="font-normal"> ${organitation.intention}<p></div>
+                        <div class="enemies-details pt-3 font-bold">Enemigos con quien debe pelear: <p class="font-normal"> ${organitation.enemies}<p></div>
                         <div class="knowledge-details text-base font-bold pt-3"> Debe tener conocomientos de: 
                             <ul class="text-base font-normal ">
                                 <li>${knowledge[0]}</li>
@@ -132,7 +134,6 @@ const renderJobsDetails = ({ id, name, image, description, membership, descripti
                                 <li>${knowledge[2]}</li>
                             </ul> 
                         </div>
-                        <div class="enemies-details pt-3 font-bold">Enemigos con quien debe pelear: <p class="font-normal"> ${organitation.enemies}<p></div>
                         <div class="container-btn-details flex justify-end pt-5">
                             <button class="open-edit-job px-3 rounded-lg mx-5 bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" data-id=${id} onclick="openEdit(${id})">Editar</button>
                             <button class="delete-job px-3 rounded-lg bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white" data-id=${id} onclick="openModal(${id})">Eliminar</button>
@@ -163,8 +164,8 @@ const saveJobs = () =>{
         location: $("#location").value,
         membership:  $("#membership").value,
         organitation: {
-                        intention: "Terminar con los Magos Oscuros",
-                        enemies: "Mortífagos"
+                        intention: $("#intentions").value,
+                        enemies: $("#enemies").value
                     },
         salary: $("#salary").value,
         knowledge: [
@@ -200,6 +201,8 @@ const openForm = () => {
             hideElement(".spinner")
             hideElement("#edit-jobs")
             hideElement(".jobs-details")
+            hideElement("#dropdown");
+            hideElement("#btn-menu-close");
         })
        
     }
@@ -214,17 +217,17 @@ const formJob = ({name, image, description, membership, location, organitation, 
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
     $("#img-job").src = image
-    knowledge[0].checked = knowledge
-    knowledge[1].checked = knowledge
-    knowledge[2].checked = knowledge
+    $("#intentions").value = organitation.intention
+    $("#enemies").value = organitation.enemies
+    // knowledge[0].checked = knowledge
+    // knowledge[1].checked = knowledge
+    // knowledge[2].checked = knowledge
     $("#url-img-job").value = image
     checkedBoxes()
-    console.log(knowledge.checked)
+    
 }
 
 // checkbox
-
-    
 
 //const limit = 3; // Define el límite de checkboxes seleccionados
 
@@ -314,14 +317,16 @@ $("#reset-filter").addEventListener("click", (e) => {
     hideElement("#params-location")
     getJobs()
 })
-// is selected
+
+// filtersParams
+
 let urlParams = ""
 const filterParams = () => {
     $("#params-location").addEventListener("change",() => {
         const valorFilter = $("#params-location").value
         const urlParamsLocation = `location=${valorFilter}`
         if(valorFilter != "") {
-            console.log(urlParams = urlParamsLocation)
+            return urlParams = urlParamsLocation
         } else {
             return ""
         }
@@ -346,8 +351,7 @@ const filterParams = () => {
     })
 }
 filterParams()
-console.log(urlParams)
-//filterParams()
+
 $("#filter-jobs").addEventListener("click", (e) => {
     e.preventDefault()
     getJobs(urlParams)
@@ -359,28 +363,23 @@ let knowledge = [];
 let count = 0
 let limit = 3
 const checkboxes = document.getElementsByName("knowledge");
-console.log(checkboxes)
+
 
 const checkedBoxes = () => {
     for (let i = 0; i < checkboxes.length; i++) {
-        const isCheck = checkboxes[i].checked
-        console.log(isCheck)
+        let isCheck = checkboxes[i].checked
         checkboxes[i].addEventListener("change", () => {
-         //console.log(checkboxes[i])
-         if (checkboxes[i].checked && knowledge.length < 3) {
+        if (isCheck && knowledge.length < 3) {
              knowledge.push(checkboxes[i].value);
              count ++
         } else {
-            checkboxes[i].checked = false
+            isCheck = false
             checkboxes[i].disabled = true
             }
-        console.log(knowledge)
-     })   
- }  
+        
+        })   
+    }  
 }
-     
-
-
 
 /*
 const toggleCheckbox = (checkbox) => {
@@ -405,8 +404,6 @@ const toggleCheckbox = (checkbox) => {
     });
   }
   */ 
-
-
 
 // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 //console.log(checkboxes)

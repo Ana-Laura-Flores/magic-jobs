@@ -44,22 +44,22 @@
             </div>
         </nav>
         <!--  dropdown -->
-    <div class="flex items-center justify-end w-full p-2 pr-8  text-right hidden bg-gradient-to-r to-zinc-950 from-sky-900 lg:hidden" id="dropdown">
-        <ul class="flex flex-col ">
-            <li class="p-2 font-bold text-white hover:text-slate-500 ">
-                <a href="#">Buscar Trabajos</a>
-            </li>
-            <li class="p-2 font-bold text-white hover:text-slate-500 ">
-                <a href="#jobs">Ver Trabajos</a>
-            </li>
-            <li class="p-2 font-bold text-white hover:text-slate-500 " id="open-form">
-                <a href="#">Agregar Trabajo</a>
-            </li>
-        </ul>
-    </div>
+        <div class="flex items-center justify-end w-full p-2 pr-8  text-right hidden bg-gradient-to-r to-zinc-950 from-sky-900 lg:hidden" id="dropdown">
+            <ul class="flex flex-col ">
+                <li class="p-2 font-bold text-white hover:text-slate-500 ">
+                    <a href="#">Buscar Trabajos</a>
+                </li>
+                <li class="p-2 font-bold text-white hover:text-slate-500 ">
+                    <a href="#jobs">Ver Trabajos</a>
+                </li>
+                <li class="p-2 font-bold text-white hover:text-slate-500 " id="open-form">
+                    <a href="#">Agregar Trabajo</a>
+                </li>
+            </ul>
+        </div>
     </header>
     <main>
-        <img id="sombrero" src="./assets/icons/sombrero.png">
+        <img id="sombrero" class="hidden md:block" src="./assets/icons/sombrero.png">
         <section class="hero w-full bg-fixed bg-cover flex flex-col justify-center bg-[url('./assets/img/hero-background.jpg')] . h-[18rem]">
             <article class="p-7 lg:pl-24 lg:px-24">
                 <h2 class="text-white text-center font-bold text-2xl lg:text-5xl my-5">Conseguí el mejor trabajo en el Mundo Mágico</h2>
@@ -199,7 +199,11 @@
                         <textarea name="" id="description-job" cols="30" rows="3" class="p-2"></textarea>
                         <label for="" class="font-bold py-3">Descripción detallada</label>
                         <textarea name="" id="description-details-job" cols="30" rows="5" class="p-2 "></textarea>
-                        <label for="location" class="font-bold py-3">Ubicación</label>
+                        <label for="intentions"class="font-bold py-1">Intenciones</label>
+                        <input type="text" id="intentions">
+                        <label for="enemies"class="font-bold py-1" >Enemigos</label>
+                        <input type="text" id="enemies">
+                        <label for="location" class="font-bold py-1">Ubicación</label>
                         <div class="pb-3  flex-col md:flex-row">
                             <select name="location" id="location" class="mb-3">
                                 <option value="Remoto" name="location">Remoto</option>
