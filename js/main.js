@@ -5,6 +5,8 @@ const showElement = (selector) => $(selector).classList.remove('hidden')
 const cleanContainer = (selector) => $(selector).innerHTML = ""
 
 const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
+//let arrayKnowledge = [];
+const checkboxes = document.getElementsByName("knowledge");
 
 // function mouse
 document.addEventListener("mousemove", (e) => {
@@ -14,6 +16,7 @@ document.addEventListener("mousemove", (e) => {
     imagen.style.left = (x + imagen.width / 3 ) + "px";
     imagen.style.top = (y + imagen.width / 3 ) + "px";
   });
+
 // funtion auxiliar disbles selects
 const disabledSelects = () => {
     $("#open-select-location").addEventListener("click", (e) => {
@@ -107,7 +110,7 @@ const renderCardsJobs = (jobs) => {
                 </div>
                 `
             }
-        }, 3000)
+        }, 2000)
     }
 }
 
@@ -141,7 +144,7 @@ const renderJobsDetails = ({ id, name, image, description, membership, descripti
                     </div>
                 `
             
-        }, 3000)
+        }, 2000)
         
         
         
@@ -168,11 +171,8 @@ const saveJobs = () =>{
                         enemies: $("#enemies").value
                     },
         salary: $("#salary").value,
-        knowledge: [
-            knowledge[0],
-            knowledge[1],
-            knowledge[2],
-            ],
+        knowledge: limitCheck(),
+            
         descriptionDetails: $("#description-details-job").value,
     }
 }
@@ -182,9 +182,6 @@ const openDetails = (id) => {
     hideElement(".hero")
     hideElement(".search")
     hideElement(".cards")
-    // const idEditJob = $(".edit-job").setAttribute("data-id", id)
-    // const idDeleteJob = $(".delete-job").setAttribute("data-id", id)
-    // $(".delete-job"),addEventListener("click", deleteJobs(id))
     showElement(".jobs-details")
     getDetailsJobs(id)
 }
@@ -209,6 +206,7 @@ const openForm = () => {
    
 }
 
+
 const formJob = ({name, image, description, membership, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
@@ -219,11 +217,19 @@ const formJob = ({name, image, description, membership, location, organitation, 
     $("#img-job").src = image
     $("#intentions").value = organitation.intention
     $("#enemies").value = organitation.enemies
-    // knowledge[0].checked = knowledge
-    // knowledge[1].checked = knowledge
-    // knowledge[2].checked = knowledge
     $("#url-img-job").value = image
-    checkedBoxes()
+    for (const check of checkboxes){
+        for (let i = 0; i < knowledge.length; i++){
+            if(knowledge[i] === check.value) {
+                check.checked = true
+            }
+        }
+    }
+    for (const check of checkboxes) {
+        if(limitCheck().length === 3 && check.checked === false) {
+            check.setAttribute("disabled", "")
+        }
+    }
     
 }
 
@@ -359,28 +365,52 @@ $("#filter-jobs").addEventListener("click", (e) => {
 
 // checkbox
 
-let knowledge = [];
-let count = 0
-let limit = 3
-const checkboxes = document.getElementsByName("knowledge");
 
 
-const checkedBoxes = () => {
-    for (let i = 0; i < checkboxes.length; i++) {
-        let isCheck = checkboxes[i].checked
-        checkboxes[i].addEventListener("change", () => {
-        if (isCheck && knowledge.length < 3) {
-             knowledge.push(checkboxes[i].value);
-             count ++
-        } else {
-            isCheck = false
-            checkboxes[i].disabled = true
-            }
-        
-        })   
-    }  
+
+// limit of checkboxs
+const limitCheck = () => {
+    let arrayKnowledge = []
+    for (const check of checkboxes) {
+        if (check.checked && arrayKnowledge.length < 3) {
+            arrayKnowledge.push(check.value)
+        }
+    }
+    return arrayKnowledge
 }
 
+
+// Event check and disable
+    for (const check of checkboxes) {
+       check.addEventListener("change", () => {
+        if (limitCheck().length === 3 ) {
+            for(const check of checkboxes){
+                if(!check.checked) {
+                    check.setAttribute("disabled", "")
+                }
+            }
+        } else {
+            for (const check of checkboxes) {
+                check.removeAttribute("disabled", "")
+            }
+        }
+        })   
+    }  
+
+
+// function auxiliar checked 
+// const check = () => {
+//     //const options = document.getElementsByName("conocimientos")
+//     for (let i = 0; i < knowledge.length; i++) {
+//         for (let j = 0; j < checkboxes.length; j++) {
+//             if(knowledge[i] === checkboxes[j].value){
+//                 //checkboxes[j].checked = true
+//                 console.log(checkboxes[j].value)
+//             }
+//         }
+//     }
+// }
+// check()
 /*
 const toggleCheckbox = (checkbox) => {
     let checkedCount = 0;
@@ -462,6 +492,7 @@ const toggleCheckbox = (checkbox) => {
 window.addEventListener("load", () => {
     getJobs()
     openForm()
+    //checkedBoxes()
 })
 
 

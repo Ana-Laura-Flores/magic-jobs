@@ -100,13 +100,13 @@
                             <label for="" class="font-bold text-base text-white p-1 mx-2 ">Conocimientos</label>
                             <button class="w-3/4 lg:w-40 h-14 mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="open-select-knowledge">Buscar por Conocimientos</button>
                             <select class="btn hidden w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105"id="params-knowledge">
-                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos">Todos</option>
-                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Transformaciones">Transformaciones</option>
-                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Herbología">Herbología</option>
-                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Pociones">Pociones</option>
-                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Encantamientos">Encantamientos</option>
-                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Defensa">Defensa</option>
-                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Varitología">Varitología</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos" name="conocimientos">Todos</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Transformaciones" name="conocimientos">Transformaciones</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Herbología" name="conocimientos">Herbología</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Pociones" name="conocimientos">Pociones</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Encantamientos" name="conocimientos">Encantamientos</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Defensa" name="conocimientos">Defensa</option>
+                                <option class="w-3/4 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Varitología" name="conocimientos">Varitología</option>
                             </select>
                     </div>
                     </div>
@@ -183,7 +183,7 @@
         </section>
         <section class="form hidden bg-[url('./assets/img/backgroun-add.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
             <form class="container-form w-full h-auto flex items-center justify-center" id="form">
-                <div class="form-add-jobs p-3 w-11/12 md:w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
+                <div class="form-add-jobs p-3 w-11/12 lg:w-5/6 h-auto flex flex-col lg:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
                     <div class="img-job">
                         <label for="" class="font-bold p-2">Url imagen</label>
                         <input type="text" id="url-img-job">
@@ -193,7 +193,7 @@
                         <label for="" class="font-bold">Nombre</label>
                         <input type="text" id="name-job" class="p-2">
                     </div>
-                    <div class="p-5 flex flex-col md:w-2/6">
+                    <div class="p-5 flex flex-col w-4/5 lg:w-2/6">
                         
                         <label for="" class="font-bold py-3">Descripción</label>
                         <textarea name="" id="description-job" cols="30" rows="3" class="p-2"></textarea>
@@ -218,10 +218,10 @@
                             </select>
                         </div>
                     </div>
-                    <div>
-                        <div class="pb-3 flex-col md:flex-row ">
+                    <div class="w-4/5 flex flex-col items-center">
+                        <div class="pb-3 flex-col  md:flex-row ">
                     
-                            <div class="mt-3">
+                            <div class="mt-3 ">
                                 <label for="" class="md:pl-3 font-bold">Sueldo</label>
                                 <input type="number" name="" id="salary">
                             </div>
@@ -231,64 +231,49 @@
                             <div  id="knowledge" class="flex ">
                             <label for=""  class="py-0.7">
                                 <div class="container-knowledge flex flex-col">
-                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
-                                                                     
-                                    <img src="./assets/icons/transformaciones.png" class="w-6 h-6 mr-2 "alt="">Transformaciones
-                                    <input class="h-3 w-3 ml-2 "type="checkbox" name="knowledge" value="Transformaciones" id="transformations" namevisible="Transformaciones">
+                                    <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                        <img src="./assets/icons/transformaciones.png" class="w-6 h-6 mr-2 "alt="">Transformaciones
+                                        <input class="h-3 w-3 ml-2 "type="checkbox" name="knowledge" value="Transformaciones" id="transformations" namevisible="Transformaciones">
                                     </div>
-                                <div class="knowledge-descript flex items-center pr-2 mb-1">
-                                    <img src="./assets/icons/encantamientos.png" class="w-6 h-6 mr-2 "alt="">Encantamientos
-                                    <input class="form-checkbox h-3 w-3 ml-2 " type="checkbox"  name="knowledge"value="Encantamientos" id="Encantamientos" namevisible="Encantamientos"> 
-                                    
-                            
+                                    <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                        <img src="./assets/icons/encantamientos.png" class="w-6 h-6 mr-2 "alt="">Encantamientos
+                                        <input class="form-checkbox h-3 w-3 ml-2 " type="checkbox"  name="knowledge"value="Encantamientos" id="Encantamientos" namevisible="Encantamientos"> 
                                     </div>
-                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
-                                    <img src="./assets/icons/herbologia.png" class="w-6 h-6 mr-2 "alt=""> Herbología
-                                    <input class="h-3 w-3 ml-2" type="checkbox"name="knowledge" value="Herbología" id="herbology"namevisible="Herbología">
-                                    
-                                    
+                                    <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                        <img src="./assets/icons/herbologia.png" class="w-6 h-6 mr-2 "alt=""> Herbología
+                                        <input class="h-3 w-3 ml-2" type="checkbox"name="knowledge" value="Herbología" id="herbology"namevisible="Herbología">
                                     </div>
                                 </div>
                                 <div class="container-knowledge flex flex-col">
                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
                                     <img src="./assets/icons/escobas.png" class="w-6 h-6 mr-2 "alt="">Escobas
                                      <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Escobas" id="brooms" namevisible="Escobas"> 
-                                    
-                                    
-                                    </div>
-                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
                                     <img src="./assets/icons/varitologia.png" class="w-6 h-6 mr-2 "alt="">Varitología
                                     <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Varitologia" id="varitology" namevisible="Varitologia">
-                                    
-                                    
-                                    </div>
-                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
-                                    <img src="./assets/icons/pociones.png" class="w-6 h-6 mr-2 "alt="">Pociones
-                                     <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Pociones" id="potions" namevisible="Pociones">
-                                    
-                                    
-                                    </div>
                                 </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/pociones.png" class="w-6 h-6 mr-2 "alt="">Pociones
+                                    <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Pociones" id="potions" namevisible="Pociones">
+                                </div>
+                            </div>
                                 <div class="container-knowledge flex flex-col">
-                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
                                     <img src="./assets/icons/elfos.png" class="w-6 h-6 mr-2 "alt="">
                                     Disimulo y Rastreo
                                      <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Disimulo y Rastreo" id="stealth" namevisible="Disimulo y Rastreo">
-                                   
-                                   
-                                    </div>
+                                </div>
                                 <div class="knowledge-descript flex items-center pr-2 mb-1">
-                                    
                                     <img src="./assets/icons/criaturasMagicas.png" class="w-6 h-6 mr-2 "alt="">
                                     Cuidado de Criaturas Mágicas
                                     <input class="h-3 w-3 ml-2"  type="checkbox" name="knowledge" value="Cuidado de Criaturas Mágicas" id="creatures" namevisible="Cuidado de Criaturas Mágicas"> 
-                                    
-                                    </div>
-                             <div class="knowledge-descript flex items-center pr-2 mb-1">
-                                <img src="./assets/icons/encantamientos.png" class="w-6 h-6 mr-2 "alt="">
-                                Defensa contra las Artes Oscuras
-                                <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Defensa contra las Artes Oscuras" id="defense" namevisible="Defensa contra las Artes Oscuras">
-                            </div>
+                                </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/encantamientos.png" class="w-6 h-6 mr-2 "alt="">
+                                    Defensa contra las Artes Oscuras
+                                    <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Defensa contra las Artes Oscuras" id="defense" namevisible="Defensa contra las Artes Oscuras">
+                                </div>
                                 </div>
                             </label>
                             </div>
