@@ -18,8 +18,8 @@
 <body>
     
     <header>
-        <nav class="h-30 w-full  bg-gradient-to-r from-zinc-950 to-sky-900	 ">
-            <div class="container flex w-full items-center justify-center px-5">
+        <nav class="h-30 w-full  bg-gradient-to-r from-zinc-950 to-sky-900" id="nav-bar">
+            <div class="container flex w-full items-center justify-between px-5">
                 <div class="img-container p-4 w-1/2">
                     <a href="./index.html">
                         <img class="w-36"src="./assets/img/magic-jobs.png" alt="logo magic jobs">
@@ -30,17 +30,20 @@
                     <span class=" hidden text-white text-4xl flex justify-end items-center	 p-5 " id="btn-menu-close">&times;
                     </span>
                 </div>
-                <ul class="flex items-center justify-end w-4/5 hidden lg:flex" id="items-menu">
-                    <li class="p-5 font-bold text-white hover:text-slate-500 ">
-                        <a href="#">Buscar Trabajos</a>
-                    </li>
-                    <li class="p-5 font-bold text-white hover:text-slate-500 ">
-                        <a href="#jobs">Ver Trabajos</a>
-                    </li>
-                    <li class="p-5 font-bold text-white hover:text-slate-500 " id="open-form">
-                        <a href="#">Agregar Trabajo</a>
-                    </li>
-                  </ul>
+                <div class="container-items-menu w-full hidden lg:flex justify-end" id="items-menu">
+                    <ul class="flex items-center justify-end w-4/5  lg:flex">
+                        <li class="p-5 font-bold text-white hover:text-slate-500 ">
+                            <a href="#">Buscar Trabajos</a>
+                        </li>
+                        <li class="p-5 font-bold text-white hover:text-slate-500 ">
+                            <a href="#jobs">Ver Trabajos</a>
+                        </li>
+                        <li class="p-5 font-bold text-white hover:text-slate-500 " id="open-form">
+                            <a href="#">Agregar Trabajo</a>
+                        </li>
+                      </ul>
+                </div>
+               
             </div>
         </nav>
         <!--  dropdown -->
@@ -187,14 +190,20 @@
         <section class="form hidden bg-[url('./assets/img/backgroun-add.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
             <form class="container-form w-full h-auto flex items-center justify-center" id="form">
                 <div class="form-add-jobs p-3 w-11/12 lg:w-5/6 h-auto flex flex-col lg:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
+                    
                     <div class="img-job">
+                        <div class="validation">
+                            <p class="validation-text hidden font-bold  text-red-600 text-base">Debe completar todos los campos</p>
+                        </div>    
                         <label for="" class="font-bold p-2">Url imagen</label>
                         <input type="text" id="url-img-job">
+                        
                         <div class="container-img">
                             <img src="./assets/icons/sombrero.jpg" alt=""class="  object-cover w-80 h:52 md:w-72 md:h-80 p-5" id="img-job">
                         </div>
                         <label for="" class="font-bold">Nombre</label>
                         <input type="text" id="name-job" class="p-2">
+                        
                     </div>
                     <div class="p-5 flex flex-col w-4/5 lg:w-2/6">
                         

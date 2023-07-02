@@ -56,8 +56,6 @@ const disabledSelects = () => {
     })
 }
 
-disabledSelects()
-
 const getJobs = (params) => {
     fetch(`${urlBase}${params ? `?${params}` : ""}`)
     .then(response => response.json())
@@ -71,8 +69,6 @@ const getDetailsJobs = (id) => {
             formJob(job)
     })
 }
-
-
 
 const addJobs = () => {
     fetch(`${urlBase}`, {
@@ -151,21 +147,38 @@ const renderJobsDetails = ({ id, name, image, description, membership, descripti
                 `
             
         }, 2000)
-        
-        
-        
-    
 }
 
-// function save jobs
 
 const openModal = () => {
     showElement(".modal")
 }
+// validation
+const validationForm = () => {
+    const name =$("#name-job").value
+    const image = $("#url-img-job").value
+    const description = $("#description-job").value
+    const location = $("#location").value
+    const membership =  $("#membership").value
+    const organitation = {
+                    intention: $("#intentions").value,
+                    enemies: $("#enemies").value
+                }
+    const salary = $("#salary").value
+    const knowledge = limitCheck()
+        
+    const descriptionDetails =  $("#description-details-job").value
 
-
+// Realizar la validación
+if (!name || !image || !description || !location || !membership || !organitation.intention || !organitation.enemies || !salary || !knowledge || !descriptionDetails) {
+    showElement(".validation-text")
+    return false; // Retorna null si la validación falla
+    } else {
+        return true
+    }
+}
+// function save jobs
 const saveJobs = () =>{
-
     return {
         name: $("#name-job").value,
         image: $("#url-img-job").value,
@@ -178,7 +191,6 @@ const saveJobs = () =>{
                     },
         salary: $("#salary").value,
         knowledge: limitCheck(),
-            
         descriptionDetails: $("#description-details-job").value,
     }
 }
@@ -194,7 +206,6 @@ const openDetails = (id) => {
 }
 
 //open form 
-
 const openForm = () => {
     for (const btn of $$("#open-form")){
         btn.addEventListener("click", () => {
@@ -207,14 +218,11 @@ const openForm = () => {
             hideElement(".jobs-details")
             hideElement("#dropdown");
             hideElement("#btn-menu-close");
-            hideElement("#items-menu")
         })
-       
     }
-   
 }
 
-
+// formulary Jobs
 const formJob = ({name, image, description, membership, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
@@ -241,32 +249,21 @@ const formJob = ({name, image, description, membership, location, organitation, 
     
 }
 
-// checkbox
-
-//const limit = 3; // Define el límite de checkboxes seleccionados
-
-
-// for (let i = 0; i < checkboxes.length; i++) {
-//   checkboxes[i].addEventListener("change", () => {
-//       let checkedCount = 0
-      
-//         if(checkboxes[i].checked()){
-//             checkedCount ++ 
-//         }
-//         if (checkedCount > limit) {
-//             checkboxes[i].getAttribute("disabled", "") // Deselecciona el checkbox excedido
-//             }
-//   });
-// }
 
 $("#submit-jobs").addEventListener("click", (e) => {
     e.preventDefault()
-    showElement("#confirm-add-jobs")
-    setTimeout(() => {
-        addJobs()
-        hideElement("#confirm-add-jobs")
+    if(!validationForm()){
+        setTimeout(() => {
+            hideElement(".validation-text")
+        }, 2000)
+    } else {
+       showElement("#confirm-add-jobs")
+        setTimeout(() => {
+            addJobs()
+            hideElement("#confirm-add-jobs")
+            } ,2000)
         
-        } ,2000)
+    }
 })
 
 $("#edit-jobs").addEventListener("click", (e)=> {
@@ -364,7 +361,7 @@ const filterParams = () => {
         }
     })
 }
-filterParams()
+
 
 $("#filter-jobs").addEventListener("click", (e) => {
     e.preventDefault()
@@ -372,17 +369,11 @@ $("#filter-jobs").addEventListener("click", (e) => {
 })
 
 // checkbox
-
-
-
-
 // limit of checkboxs
 const limitCheck = () => {
     let arrayKnowledge = []
     for (const check of checkboxes) {
-        if (check.checked && arrayKnowledge.length < 3) {
-            arrayKnowledge.push(check.value)
-        }
+        check.checked && arrayKnowledge.length < 3 ? arrayKnowledge.push(check.value) : null;
     }
     return arrayKnowledge
 }
@@ -391,116 +382,34 @@ const limitCheck = () => {
 // Event check and disable
     for (const check of checkboxes) {
        check.addEventListener("change", () => {
-        if (limitCheck().length === 3 ) {
-            for(const check of checkboxes){
-                if(!check.checked) {
-                    check.setAttribute("disabled", "")
+            if (limitCheck().length === 3 ) {
+                for(const check of checkboxes){
+                    if(!check.checked) {
+                        check.setAttribute("disabled", "")
+                    }
+                }
+            } else {
+                for (const check of checkboxes) {
+                    check.removeAttribute("disabled", "")
                 }
             }
-        } else {
-            for (const check of checkboxes) {
-                check.removeAttribute("disabled", "")
-            }
-        }
         })   
     }  
 
-
-// function auxiliar checked 
-// const check = () => {
-//     //const options = document.getElementsByName("conocimientos")
-//     for (let i = 0; i < knowledge.length; i++) {
-//         for (let j = 0; j < checkboxes.length; j++) {
-//             if(knowledge[i] === checkboxes[j].value){
-//                 //checkboxes[j].checked = true
-//                 console.log(checkboxes[j].value)
-//             }
-//         }
-//     }
-// }
-// check()
-/*
-const toggleCheckbox = (checkbox) => {
-    let checkedCount = 0;
-  
-    for (let i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        knowledge.push(checkboxes[i].value)
-        checkedCount++;
-        console.log(knowledge)
-      }
-    }
-  
-    if (checkedCount > limit) {
-      checkbox.checked = false; // Deselecciona el checkbox excedido
-    }
-  }
-  
-  for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener("click", () => {
-      toggleCheckbox(this);
-    });
-  }
-  */ 
-
-// const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-//console.log(checkboxes)
-    // const boxChecked = () => {
-    //     let knowledge = []
-    //     const checkBoxes = document.querySelectorAll('input[type="checkbox"]:checked')
-    //     for (let i =0; i < checkBoxes.length; i++) {
-    //         knowledge.push(checkBoxes[i].value)
-    //         console.log(knowledge)
+    // const validationForm = () => {
+    //     if (($("#url-img-job") === "") ||  ($("#name-job") === "")) {
+    //         showElement(".validation-text")
+    //         return false
     //     }
-
-    //     if (knowledge.length >= 3) {
-    //         const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
-    //         for (let i =0; i < allCheckboxes.length; i++) {
-    //             if (!allCheckboxes[i].checked) {
-    //                 allCheckboxes[i].disabled = true
-    //             }
-    //         }
-            
-            
-    //     } else {
-    //         const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
-    //         for( let i = 0; i< allCheckboxes.length; i++) {
-    //             allCheckboxes[i].disabled = false
-    //         }
-            
-    //     }
-    // }
-    // const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
-    // for (const btn of allCheckboxes){
-    //     btn.addEventListener("change", () => {
-    //         boxChecked()
-    //     })
         
     // }
-    
-    // const allCheckboxes = document.querySelectorAll('input[type="checkbox"]')
-    // allCheckboxes.addEventListener("cha")
-    // for (let i = 0; i < checkboxes.length; i++) {
-    // checkboxes[i].addEventListener("click", () => {
-    //     console.log(checkboxes[i])
-    //     if (checkboxes.length >= 3) {
-            
-    //         knowledge.push(checkboxes[i].value);
-    //         count ++
-    //       } else {
-    //         checkboxes[i].checked = false
-    //         checkboxes[i].disabled = true
-    //       }
 
-    //     console.log(knowledge)
-    // })   
-      
-
-//}  
 window.addEventListener("load", () => {
     getJobs()
     openForm()
-    //checkedBoxes()
+    disabledSelects()
+    filterParams()
+   
 })
 
 
