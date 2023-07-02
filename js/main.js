@@ -202,7 +202,10 @@ const openDetails = (id) => {
     hideElement(".cards")
     showElement(".jobs-details")
     getDetailsJobs(id)
-    hideElement("#items-menu")
+    hideElement("#btn-menu")
+    hideElement("#item-search");
+    hideElement("#item-view");
+    hideElement("#open-form")
 }
 
 //open form 
@@ -218,6 +221,10 @@ const openForm = () => {
             hideElement(".jobs-details")
             hideElement("#dropdown");
             hideElement("#btn-menu-close");
+            hideElement("#item-search");
+            hideElement("#item-view");
+            hideElement("#open-form")
+            
         })
     }
 }
