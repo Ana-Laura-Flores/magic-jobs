@@ -5,17 +5,23 @@ const showElement = (selector) => $(selector).classList.remove('hidden')
 const cleanContainer = (selector) => $(selector).innerHTML = ""
 
 const urlBase = "https://6483a556f2e76ae1b95cbbde.mockapi.io/jobs"
-//let arrayKnowledge = [];
+
 const checkboxes = document.getElementsByName("knowledge");
 
 // function mouse
-document.addEventListener("mousemove", (e) => {
-    let imagen = $("#sombrero");
-    let x = e.clientX;
-    let y = e.clientY;
-    imagen.style.left = (x + imagen.width / 3 ) + "px";
-    imagen.style.top = (y + imagen.width / 3 ) + "px";
-  });
+const eventMouseMove = () => {
+    showElement("#sombrero")
+    document.addEventListener("mousemove", (e) => {
+        let imagen = $("#sombrero");
+        let x = e.clientX;
+        let y = e.clientY;
+        imagen.style.left = (x + imagen.width / 3 ) + "px";
+        imagen.style.top = (y + imagen.width / 3 ) + "px";
+      });
+}
+if (!/Mobi|Android/i.test(navigator.userAgent)) {
+    eventMouseMove();
+  }
 
 // funtion auxiliar disbles selects
 const disabledSelects = () => {
@@ -184,6 +190,7 @@ const openDetails = (id) => {
     hideElement(".cards")
     showElement(".jobs-details")
     getDetailsJobs(id)
+    hideElement("#items-menu")
 }
 
 //open form 
@@ -200,6 +207,7 @@ const openForm = () => {
             hideElement(".jobs-details")
             hideElement("#dropdown");
             hideElement("#btn-menu-close");
+            hideElement("#items-menu")
         })
        
     }
@@ -210,7 +218,7 @@ const openForm = () => {
 const formJob = ({name, image, description, membership, location, organitation, salary, knowledge, descriptionDetails}) => {
     $("#name-job").value = name
     $("#description-job").value = description
-    $("#location").selected = location
+    $("#location").value = location
     $("#membership").value = membership
     $("#salary").value = salary
     $("#description-details-job").value = descriptionDetails
