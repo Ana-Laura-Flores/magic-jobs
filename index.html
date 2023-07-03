@@ -9,7 +9,7 @@
     <!-- script icons -->
     <script src="https://kit.fontawesome.com/a47af75b49.js" crossorigin="anonymous"></script>
     <!-- link favicon -->
-    <link rel="shortcut icon" href="./images/ana.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/ana.ico" type="image/x-icon">
     <!-- link css -->
     <link rel="stylesheet" href="css/styles.css">
    
@@ -17,5 +17,305 @@
 </head>
 <body>
     
+    <header>
+        <nav class="h-30 w-full  bg-opacity-50 bg-gradient-to-r from-zinc-950 to-sky-900" id="nav-bar">
+            <div class="container flex w-full items-center justify-between px-5">
+                <div class="img-container p-4 w-1/2">
+                    <a href="./index.html">
+                        <img class="w-36"src="./assets/img/magic-jobs.png" alt="logo magic jobs">
+                    </a>
+                </div>
+                <div class="nav-burguer w-1/2 flex justify-end lg:hidden">
+                    <i class="fas fa-bars text-white text-4xl flex justify-end items-center	 p-1" id="btn-menu"></i>
+                    <span class=" hidden text-white text-4xl flex justify-end items-center	 p-5 " id="btn-menu-close">&times;
+                    </span>
+                </div>
+                <div class="container-items-menu w-full hidden lg:flex justify-end" id="items-menu">
+                    <ul class="flex items-center justify-end w-4/5  ">
+                        <li class="p-5 font-bold text-white hover:text-slate-500 " id="item-search">
+                            <a href="#">Buscar Trabajos</a>
+                        </li>
+                        <li class="p-5 font-bold text-white hover:text-slate-500 " id="item-view">
+                            <a href="#jobs">Ver Trabajos</a>
+                        </li>
+                        <li class="p-5 font-bold text-white hover:text-slate-500 " id="open-form">
+                            <a href="#">Agregar Trabajo</a>
+                        </li>
+                      </ul>
+                </div>
+               
+            </div>
+        </nav>
+        <!--  dropdown -->
+        <div class="flex items-center justify-end w-full p-2 pr-8  text-right hidden bg-gradient-to-r to-zinc-950 from-sky-900 lg:hidden" id="dropdown">
+            <ul class="flex flex-col ">
+                <li class="p-2 font-bold text-white hover:text-slate-500 ">
+                    <a href="#form-filter">Buscar Trabajos</a>
+                </li>
+                <li class="p-2 font-bold text-white hover:text-slate-500 ">
+                    <a href="#jobs">Ver Trabajos</a>
+                </li>
+                <li class="p-2 font-bold text-white hover:text-slate-500 " id="open-form">
+                    <a href="#">Agregar Trabajo</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <img id="sombrero" class="hidden" src="./assets/icons/sombrero.png">
+        <section class="hero w-full bg-fixed bg-cover flex flex-col justify-center bg-[url('./assets/img/hero-background.jpg')] . h-[18rem]">
+            <article class="p-7 lg:pl-24 lg:px-24">
+                <h2 class="text-white text-center font-bold text-2xl lg:text-5xl my-5">Conseguí el mejor trabajo en el Mundo Mágico</h2>
+                <h3 class="text-white text-center italic text-lg my-5 lg:text-2xl">No apto para muggles.</h3>
+            </article>
+        </section>
+        <div class="spinner w-full hidden flex justify-center items-center bg-gradient-to-r to-zinc-950 from-sky-900">
+            <img src="./assets/img/spinner01.png" alt="spiner snicht dorada" id="spinner-01" class="w-1/5">
+            <img src="./assets/img/spinner02.png" alt="spiner snicht dorada" id="spinner-02" class="w-1/5">
+        </div>
+        <form action="" id="form-filter">
+            <section class="search w-full flex flex-col items-center justify-center bg-gradient-to-r to-zinc-950 from-sky-900 h-auto">
+                <article class="w-11/12 p-7 flex items-center lg:pl-24 lg:p-2 lg:px-5 ">
+                    <div class="keypad w-full flex flex-col justify-center lg:justify-start lg:flex-row w-1/2  ">
+                    <div class="flex flex-col lg:flex-row">
+                    <div class="container w-full flex flex-col">
+                            <label for="" class="font-bold text-base text-white p-1 mx-2 ">Ubicación Laboral</label>
+                            <button class="w-5/6 lg:w-40 h-14 mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="open-select-location">Buscar por Locación</button>
+                            <select class="w-5/6 hidden lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="params-location">
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="" data-name="location=">Todos</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Remoto">Remoto</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Presencial">Presencial</option>
+                            </select>
+                    </div>
+                        <div class="container w-full flex flex-col ">
+                            <label for=""class="font-bold text-base text-white p-1 mx-2 ">Perteneciente a:</label>
+                            <button class="bg-white w-5/6 lg:w-40 h-14 mr-3 rounded-md font-bold text-black p-1 m-2 my-2 hover:scale-105" id="open-select-membership">Buscar por organización</button>
+                            <select class="btn hidden bg-white w-5/6 lg:w-40 h-auto mr-3 rounded-md font-bold text-black p-1 m-2 my-2 hover:scale-105" id="params-membership">
+                                <option value="Todos" class="btn w-5/6 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Todos</option>
+                                <option value="Ministerio" class="btn w-5/6 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Ministerio de Magia</option>
+                                <option value="Hogwarts" class="btn w-5/6 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hogwarts</option>
+                                <option value="Gringot" class="btn w-5/6 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Gringot</option>
+                                <option value="Hospital" class="btn w-w-5/6 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2  hover:scale-105">Hospital San Mungo</option>
+                                <option value="Hogsmeade" class="btn w-w-5/6 lg:w-40 h-auto mr-3 rounded-md font-normal text-black p-1 m-2 hover:scale-105">Hogsmeade</option>
+                            </select>
+                        </div>  
+                        <div class="container w-full flex flex-col">
+                            <label for="" class="font-bold text-base text-white p-1 mx-2 ">Conocimientos</label>
+                            <button class="w-5/6 lg:w-40 h-14 mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105" id="open-select-knowledge">Buscar por Conocimientos</button>
+                            <select class="btn hidden w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-bold text-base text-white p-1 m-2	my-2 hover:scale-105"id="params-knowledge">
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Todos" name="conocimientos">Todos</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Transformaciones" name="conocimientos">Transformaciones</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Herbología" name="conocimientos">Herbología</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Pociones" name="conocimientos">Pociones</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Encantamientos" name="conocimientos">Encantamientos</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Defensa" name="conocimientos">Defensa</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Varitología" name="conocimientos">Varitología</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Escobas" name="conocimientos">Escobas</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Disimulo" name="conocimientos">Disimulo</option>
+                                <option class="w-5/6 lg:w-40 h-auto mr-3 rounded-md bg-slate-600 font-normal p-1 m-2" value="Cuidado" name="conocimientos">Cuidado</option>
+                            </select>
+                    </div>
+                    </div>
+                        <div class="container-buttons w-5/6 flex items-end justify-between lg:justify-center	m-2 my-2 ">
+                            <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-sky-700" id="filter-jobs">Buscar</button>
+                            <button class="w-3/4 lg:w-40 h-auto mr-3 rounded-xl bg-slate-950 font-bold text-base text-white p-1 hover:bg-cyan-900" id="reset-filter">Limpiar</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </form>
+          
+        <section class="cards w-full h-auto p-8  bg-[url(./assets/img/background-jobs-2.jpg)] bg-repeat " id="jobs">
+            <article>
+                <h3 class="text-3xl text-center font-bold text-white my-8 ">Empleos Mágicos</h3>
+                <div class="flex  flex-col  items-center flex-wrap  lg:flex-row lg:justify-evenly lg:mx-24" id="container-jobs">
+                    <!-- insert cards with render js -->
+                    <!-- <div class="flex flex-col items-center rounded-xl mb-12 p-4 w-80 bg-slate-200 drop-shadow-lg hover:scale-105">
+                        <div class="w-[510px] h-[380px]"><img src="./assets/img/aurores.jpg" class=" "alt="auror ministerio de magia"></div> 
+                        <h4 class="text-2xl text-[#373737] font-bold mt-4 ">Auror</h4>
+                        <p class="text-sm mt-2">
+                            Se busca Auror para investigar crímenes relacionados con las Artes Oscuras y cazar y capturar a los Magos Oscuros. Deberán tener excelentes credenciales académicas. Mínimo de cinco EXTASIS en materias desafiantes.
+                        </p>
+                        <button class="w-28 my-4 h-8 text-white bg-[#373737] rounded-lg m-auto hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 ">Detalles</button>
+                    </div>
+                    <div class="flex flex-col items-center rounded-lg mb-12 p-4 w-80 bg-slate-200 drop-shadow-lg hover:scale-105">
+                        <img src="./assets/img/auror.png" class="w-48 "alt="auror ministerio de magia">
+                        <h4 class="text-2xl text-[#373737] font-bold mt-4 ">Auror</h4>
+                        <p class="text-sm mt-2">
+                            Se busca Auror para investigar crímenes relacionados con las Artes Oscuras y cazar y capturar a los Magos Oscuros. Deberán tener excelentes credenciales académicas. Mínimo de cinco EXTASIS en materias desafiantes. Tales materias altamente recomendadas incluídas: Pociones, Defensa Contra las Artes Oscuras, Transformaciones, Herbología y Encantamientos con las mejores calificaciones de 'Sobresaliente' o 'Excede las expectativas' en las materias elegidas por los estudiantes. Los órganos de gobierno mágicos investiarán los antecedentes penales de los solicitantes
+                        </p>
+                        <button class="w-28 my-4 h-8 text-white bg-[#373737] rounded-lg m-auto hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 ">Detalles</button>
+                    </div>
+                    <div class="flex flex-col items-center rounded-md  mb-12 p-4  w-80 bg-slate-200 drop-shadow-lg hover:scale-105">
+                        <img src="./assets/img/auror.png" class="w-48 "alt="auror ministerio de magia">
+                        <h4 class="text-2xl text-[#373737] font-bold mt-4 ">Auror</h4>
+                        <p class="text-sm mt-2">
+                            Se busca Auror para investigar crímenes relacionados con las Artes Oscuras y cazar y capturar a los Magos Oscuros. Deberán tener excelentes credenciales académicas. Mínimo de cinco EXTASIS en materias desafiantes. Tales materias altamente recomendadas incluídas: Pociones, Defensa Contra las Artes Oscuras, Transformaciones, Herbología y Encantamientos con las mejores calificaciones de 'Sobresaliente' o 'Excede las expectativas' en las materias elegidas por los estudiantes. Los órganos de gobierno mágicos investiarán los antecedentes penales de los solicitantes
+                        </p>
+                        <button class="w-28 my-4 h-8 text-white bg-[#373737] rounded-lg m-auto  hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900">Detalles</button>
+                    </div> -->
+                    
+                </div>
+            </article>
+        </section>
+        <section class="jobs-details hidden bg-[url('./assets/img/background-details.jpg')] bg-cover p-5 h-auto flex items-center justify-center">
+            <div class="container-jobs-details w-full h-auto flex items-center justify-center">
+                <div class="card-details w-5/6 h-auto flex flex-col md:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-10">
+                 <!-- insert details jobs with js -->
+                </div>
+            </div>
+        </section>
+        <section class="form hidden bg-[url('./assets/img/backgroun-add.jpg')] bg-cover p-10 h-auto flex items-center justify-center">
+            <form class="container-form w-full h-auto flex items-center justify-center" id="form">
+                <div class="form-add-jobs p-2 px-3 w-11/12 lg:w-full h-auto flex flex-col lg:flex-row justify-center items-center rounded-xl backdrop-opacity-10 backdrop-invert bg-slate-200/50 drop-shadow-lg mt-5">
+                    
+                    <div class="img-job flex flex-col">
+                        <label for="" class="font-bold p-2">Url imagen</label>
+                        <input type="text" class="rounded p-1" id="url-img-job">
+                        
+                        <div class="container-img rounded">
+                            <img src="./assets/icons/sombrero.jpg" alt=""class=" mt-5 object-cover w-80 h:52 md:w-72 md:h-80 p-2" id="img-job">
+                        </div>
+                        <label for="" class="font-bold">Nombre</label>
+                        <input type="text" id="name-job" class="p-2 rounded">
+                        
+                    </div>
+                    <div class="p-5 flex flex-col w-4/5 lg:w-2/6">
+                        
+                        <label for="" class="font-bold py-3">Descripción</label>
+                        <textarea name="" id="description-job" cols="30" rows="3" class="p-2 rounded"></textarea>
+                        <label for="" class="font-bold py-3">Descripción detallada</label>
+                        <textarea name="" id="description-details-job" cols="30" rows="5" class="p-2 rounded "></textarea>
+                        <label for="intentions"class="font-bold py-1">Intenciones</label>
+                        <input type="text" id="intentions" class="p-1 rounded">
+                        <label for="enemies"class="font-bold py-1" >Enemigos</label>
+                        <input type="text" id="enemies" class="p-1 rounded">
+                        <label for="location" class="font-bold py-1">Ubicación</label>
+                        <div class="pb-3  flex-col md:flex-row">
+                            <select name="location" id="location" class="mb-3 rounded p-1">
+                                <option value="Remoto" name="location">Remoto</option>
+                                <option value="Presencial"name="location" >Presencial</option>
+                            </select>
+                            <select name="membership" id="membership" class="rounded p-1">
+                                <option value="Hogwarts" name="membership" >Hogwarts</option>
+                                <option value="Gringot" name="membership">Gringot</option>
+                                <option value="Ministerio de Magia" name="membership">Ministerio de Magia</option>
+                                <option value="Hospital San Mungo" name="membership">Hospital San Mungo</option>
+                                <option value="Hogsmeade" name="membership">Hogsmeade</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="w-4/5 lg:w-2/5 flex flex-col items-center">
+                        <div class="pb-3 flex-col  md:flex-row ">
+                    
+                            <div class="mt-3 ">
+                                <label for="" class="md:pl-3 font-bold">Sueldo</label>
+                                <input type="number" name="" id="salary" class="rounded p-1">
+                            </div>
+                        </div>
+                        <div class="knowledge-options flex flex-col" id="knowledge-job"> 
+                            <div><h3 class="font-bold pb-3">Conocimientos Necesarios</h3></div>
+                            <div  id="knowledge" class="flex ">
+                            <label for=""  class="py-0.7">
+                                <div class="container-knowledge  flex flex-col">
+                                    <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                        <img src="./assets/icons/transformaciones.png" class="w-6 h-6 mr-2 "alt="">Transformaciones
+                                        <input class="h-3 w-3 ml-2 "type="checkbox" name="knowledge" value="Transformaciones" id="transformations" namevisible="Transformaciones">
+                                    </div>
+                                    <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                        <img src="./assets/icons/encantamientos.png" class="w-6 h-6 mr-2 "alt="">Encantamientos
+                                        <input class="form-checkbox h-3 w-3 ml-2 " type="checkbox"  name="knowledge"value="Encantamientos" id="Encantamientos" namevisible="Encantamientos"> 
+                                    </div>
+                                    <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                        <img src="./assets/icons/herbologia.png" class="w-6 h-6 mr-2 "alt=""> Herbología
+                                        <input class="h-3 w-3 ml-2" type="checkbox"name="knowledge" value="Herbología" id="herbology"namevisible="Herbología">
+                                    </div>
+                                </div>
+                                <div class="container-knowledge flex flex-col">
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/escobas.png" class="w-6 h-6 mr-2 "alt="">Escobas
+                                     <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Escobas" id="brooms" namevisible="Escobas"> 
+                                </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/varitologia.png" class="w-6 h-6 mr-2 "alt="">Varitología
+                                    <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Varitologia" id="varitology" namevisible="Varitologia">
+                                </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/pociones.png" class="w-6 h-6 mr-2 "alt="">Pociones
+                                    <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Pociones" id="potions" namevisible="Pociones">
+                                </div>
+                            </div>
+                                <div class="container-knowledge flex flex-col">
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/elfos.png" class="w-6 h-6 mr-2 "alt="">
+                                    Disimulo y Rastreo
+                                     <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Disimulo y Rastreo" id="stealth" namevisible="Disimulo y Rastreo">
+                                </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/criaturasMagicas.png" class="w-6 h-6 mr-2 "alt="">
+                                    Cuidado de Criaturas Mágicas
+                                    <input class="h-3 w-3 ml-2"  type="checkbox" name="knowledge" value="Cuidado de Criaturas Mágicas" id="creatures" namevisible="Cuidado de Criaturas Mágicas"> 
+                                </div>
+                                <div class="knowledge-descript flex items-center pr-2 mb-1">
+                                    <img src="./assets/icons/defensaArtesOscuras.png" class="w-6 h-6 mr-2 "alt="">
+                                    Defensa contra las Artes Oscuras
+                                    <input class="h-3 w-3 ml-2" type="checkbox" name="knowledge" value="Defensa contra las Artes Oscuras" id="defense" namevisible="Defensa contra las Artes Oscuras">
+                                </div>
+                                </div>
+                            </label>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="validations w-full flex justify-center mt-3">
+                        <p class="hidden text-green-600 font-bold text-lg" id="confirm-add-jobs">El trabajo se ha agregado correctamente</p>
+                        <p class="validation-text hidden font-bold  text-red-600 text-lg">Debe completar todos los campos</p>
+                    </div>
+                        <div class="flex justify-end mt-10">
+                            
+                              
+                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" id="submit-jobs">Agregar</button>
+                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-teal-900 text-white" id="edit-jobs">Editar</button>
+                            <button class="ml-3 px-2 py-1 rounded-md bg-[#373737] hover:bg-gradient-to-r  hover:to-slate-600 hover:from-sky-900 text-white" id="cancel-job">Cancelar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+    <!-- modal delete -->
+    <div class="modal hidden z-10" id="modal-open">
+        <div id="modal-component-container" class="fixed inset-0">
+            <div class="modal-flex-container flex items-end justify-center min-h-screen pt-4 px-4 bb-20 text-center sm:block sm:p-0">
+                <div class="modal-bg-container fixed inset-0 bg-gray-700 bg-opacity-75">
+
+                </div>
+                <div class="modal-space-container hidden sm:inline-block sm:align-middle sm:min-h-screen"></div>
+                    <div class="modal-container inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
+                        <div class="modal-wrapper bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div class="modal-wrapper-flex sm:flex sm:items-start">
+                                <div class="modal-icon mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"><i class="fa-sharp fa-solid fa-triangle-exclamation text-red-600 fill-current"></i></div>
+                                <div class="modal-content text-center mt-3 sm:mt-0 sm:ml-4 sm:text-left">
+                                    <h3 class="text-lg font-medium text-gray-900">Eliminar Trabajo</h3>
+                                    <div class="modal-text mt-2">
+                                        <p class="text-gray-500 text-sm">Seguro que quieres elminar este trabajo?</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="modal-action md:flex md:flex-row md:justify-end bg-gray-50 px-4 py-3 sm:px-6 sm-flex flex-col mt-3 ">
+                            <button class="w-full inline-flex justify-center rounded-md border border-gray-300 shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm " id="btn-close-modal-job">Cancelar</button>
+                            <button class="w-full inline-flex justify-center rounded-md border border-gray-300 shadow-md px-4 py-2 bg-red-700 font-medium text-white hover:bg-red-600 focus:outline-none focus:outline-none focus-ring-2 focus:ring-offset-2 focus:ring-red-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" id="btn-delete-job">Borrar</button>
+                           
+                        </div>
+                    </div>
+             </div>
+        </div>
+    </div>
+    </main>
+    <footer class="bg-gradient-to-r to-zinc-950 from-sky-900 h-auto flex justify-end">
+        <h2 class="text-white text-lg font-mono p-10">Realizado por Ana Laura Flores</h2>
+    </footer>
+    <script src="./js/main.js" type="module"></script>
 </body>
 </html>
