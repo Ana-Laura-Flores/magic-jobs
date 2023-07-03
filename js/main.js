@@ -12,7 +12,6 @@ const eventMouseMove = () => {
       });
 }
 
-
 // event open filters
 const disabledSelects = () => {
     $(SEL.openFilterLocation).addEventListener("click", (e) => {
