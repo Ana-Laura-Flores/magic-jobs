@@ -1,4 +1,4 @@
-import { $, $$, urlParams, Render, SEL, Utils, Methods } from './modules.js'
+import { $, urlParams,  SEL, Utils, Methods } from './modules.js'
 
 // function mouse
 const eventMouseMove = () => {
@@ -11,11 +11,9 @@ const eventMouseMove = () => {
         imagen.style.top = (y + imagen.width / 3 ) + "px";
       });
 }
-if (!/Mobi|Android/i.test(navigator.userAgent)) {
-    eventMouseMove();
-}
 
-// funtion auxiliar disbles selects
+
+// event open filters
 const disabledSelects = () => {
     $(SEL.openFilterLocation).addEventListener("click", (e) => {
         e.preventDefault()
@@ -52,7 +50,7 @@ $(SEL.submitJobs).addEventListener("click", (e) => {
     e.preventDefault()
     if(!Utils.validationForm()){
         setTimeout(() => {
-            Utils.hideElement(".validation-text")
+            Utils.hideElement(SEL.textValidation)
         }, 2000)
     } else {
        Utils.showElement(SEL.confirmAdd)
@@ -87,10 +85,12 @@ $(SEL.burguerMenu).addEventListener("click", (e) => {
 
 // btn cancel add and cancel edit
 $(SEL.btnCancel).addEventListener("click", () => {
+    Methods.getJobs()
     Utils.hideElement(".form")
     Utils.showElement(".hero")
     Utils.showElement(".search")
     Utils.showElement(".jobs")
+    
 })
 
 // btn delete
@@ -119,22 +119,15 @@ $(SEL.resetFilter).addEventListener("click", (e) => {
 
 // filtersParams
 
-
-
-
-
 $(SEL.filter).addEventListener("click", (e) => {
     e.preventDefault()
     Methods.getJobs(urlParams)
 })
 
 // checkbox
-// limit of checkboxs
-
-
 
 // Event check and disable
-const chekDisable = () => {
+
 for (const check of Utils.checkboxes) {
        check.addEventListener("change", () => {
             if (Utils.limitCheck().length === 3 ) {
@@ -150,14 +143,16 @@ for (const check of Utils.checkboxes) {
             }
         })   
     }  
-}
+
 
 window.addEventListener("load", () => {
     Methods.getJobs()
     Utils.openForm()
     disabledSelects()
     Utils.filterParams()
-   
 })
+if (!/Mobi|Android/i.test(navigator.userAgent)) {
+    eventMouseMove();
+}
 
 

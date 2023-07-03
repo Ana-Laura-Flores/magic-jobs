@@ -45,8 +45,8 @@ export const SEL = {
     openDetails: ".details-jobs",
     editForm: ".open-edit-job",
     btnCloseModal: "#btn-close-modal-job",
-    modalConfirm: ".modal"
-
+    modalConfirm: ".modal",
+    textValidation: ".validation-text",
 }
 export const Utils = {
     hideElement: (selector) => $(selector).classList.add('hidden'),
@@ -70,8 +70,8 @@ export const Utils = {
         const descriptionDetails =  $(SEL.descriptionDetails).value
         
         // Realizar la validación
-        if (!name || !image || !description || !location || !membership || !organitation.intention || !organitation.enemies || !salary || !knowledge || !descriptionDetails) {
-            Utils.showElement(".validation-text")
+        if (!name || !image || !description || !location || !membership || !organitation.intention || !organitation.enemies || !salary || !knowledge || !descriptionDetails){
+            Utils.showElement(SEL.textValidation)
             return false; 
             } else {
                 return true
@@ -97,6 +97,7 @@ export const Utils = {
                 })
             }
         },
+
         saveJobs: () =>{
             return {
                 name: $(SEL.jobName).value,
@@ -140,6 +141,7 @@ export const Utils = {
             }
             
         },
+
         filterParams: () => {
             $(SEL.filterParamsLocation).addEventListener("change",() => {
                 const valorFilter = $(SEL.filterParamsLocation).value
@@ -169,6 +171,7 @@ export const Utils = {
                 }
             })
         },
+
         limitCheck: () => {
             let arrayKnowledge = []
             for (const check of Utils.checkboxes) {
