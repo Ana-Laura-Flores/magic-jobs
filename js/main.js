@@ -111,7 +111,7 @@ $(SEL.resetFilter).addEventListener("click", (e) => {
     Utils.hideElement(SEL.filterParamsKnowledge)
     Utils.showElement(SEL.openFilterMembership)
     Utils.hideElement(SEL.filterParamsMembership)
-    Utils.showElement(SEL.filterLocation)
+    Utils.showElement(SEL.openFilterLocation)
     Utils.hideElement(SEL.filterParamsLocation)
     Methods.getJobs()
 })
